@@ -331,6 +331,14 @@ export const SITE_MAP: SiteMapGroup[] = [
         ja: "page",
         surfaceTag: "interactive",
       },
+      {
+        href: "/candor",
+        title: "Candor",
+        description:
+          "What I'd say if we were already on the team. Found, not pushed. Not in the top nav.",
+        ja: "page",
+        surfaceTag: "static",
+      },
     ],
   },
 ];

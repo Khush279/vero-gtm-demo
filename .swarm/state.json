@@ -1,30 +1,36 @@
 {
-  "wave": 15,
-  "shipped_summary": "45 user-facing surfaces, 14 waves, 108 tests, refreshed Loom + a11y audit. ~50 worker dispatches across 6 org-budget hits, all integrated.",
+  "wave": 16,
+  "shipped_summary": "45 surfaces, 142 vitest tests, 14 clean waves + 1 partial. Wave 15 hit budget walls.",
   "shipped": [
     {"wave": 1, "result": "10 surfaces"},
-    {"wave": 2, "result": "/experiments /playbooks /day1 + 65 tests + Loom + README"},
+    {"wave": 2, "result": "/experiments /playbooks /day1 + 65 tests"},
     {"wave": 3, "result": "SEO meta + mobile + copy scrub"},
     {"wave": 4, "result": "/sources /metrics + Slack mock + ref customers + keyboard shortcuts"},
     {"wave": 5, "result": "/case-study /vs-tali /calculator /objections /resources + sparklines"},
     {"wave": 6, "result": "/weekly-digest /prompt-debugger /vs-dax /vs-suki /timeline /interview-prep + 10 OG variants"},
-    {"wave": 7, "result": "/demo-script /channel-mix /onboarding-plan /vs-summary /chat (4/6 hit org limit; finished gaps)"},
+    {"wave": 7, "result": "/demo-script /channel-mix /onboarding-plan /vs-summary /chat (4/6 hit org limit)"},
     {"wave": 8, "result": "/press-release /contracts /qa-summary"},
     {"wave": 9, "result": "/board-deck /not-found print stylesheet polish-pass-12-fixes"},
     {"wave": 10, "result": "/docs /map site-icons sitemap manifest footnoted-strategy"},
     {"wave": 11, "result": "/announce /sql /faq + README+MOBILE_AUDIT refresh"},
     {"wave": 12, "result": "/retro /scorecard /budget + 6 polish fixes"},
     {"wave": 13, "result": "/diff /tour /credit"},
+    {"wave": 14, "result": "/changelog + LOOM refresh + a11y fixes"},
     {
-      "wave": 14,
+      "wave": 15,
       "workers": [
-        "14.1: LOOM_SCRIPT refresh (608 spoken words, 12 segments)",
-        "14.2: A11Y_AUDIT + 3 aria-label fixes",
-        "14.3: /changelog 13-wave shipping log"
+        "15.1 tests: 21 + 13 = 34 new tests landed (org limit hit before site-map + changelog tests)",
+        "15.2 chat anchors: KbDoc anchorId field shipped; client wiring deferred (stream timeout)",
+        "15.3 /candor: DEFERRED (worker stalled, no files shipped)"
       ],
-      "result": "All 3 clean."
+      "result": "Partial. 3/3 workers hit issues. 142/142 tests still green after loop driver fixed one test fixture."
     }
   ],
   "in_flight": [],
-  "stop_recommendation": "At 45 surfaces, 14 waves, all gold-standard quality, the swarm has materially exhausted productive marginal territory. The remaining bottleneck is *outside* this codebase: deploy URL, Loom recording, cold-read review. Future ticks will continue but produce marginal-at-best polish."
+  "deferred_for_wave_16_or_later": [
+    "Finish W15.2 — add id attrs to /strategy h2/h3, /experiments cards, /playbooks cards, /sources entries, /interview-prep questions; update buildRagPrompt to include anchorId in citation directive; update chat-panel.tsx Link href to compose anchor",
+    "Finish W15.3 — build /candor easter-egg page (data + page) and add to /map under 'For the founders' group",
+    "Add tests/site-map.test.ts and tests/changelog.test.ts (data-shape sanity)"
+  ],
+  "org_budget_signal": "Wave 15 saw 3/3 workers hit issues (1 org limit, 1 stream timeout, 1 stall). Strong signal to slow dispatch cadence to >30 min between waves and reduce fan-out to 2 small workers max for next 2-3 waves."
 }
