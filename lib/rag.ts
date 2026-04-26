@@ -35,6 +35,13 @@ export type KbDoc = {
   title: string;
   /** Internal link the citation chip routes to (e.g. "/strategy"). */
   surface: string;
+  /**
+   * Optional anchor (no leading `#`) that deep-links into the surface page.
+   * Composed by the client as `${surface}#${anchorId}`. All slugs are
+   * lowercase-hyphenated so they're safe in URLs and match `id` attrs in
+   * the DOM.
+   */
+  anchorId?: string;
   /** Body text the retrieval scorer searches. Plain text, no markdown chrome. */
   body: string;
   /** Free-form tags. Future-proofing for filters; not used in scoring yet. */
@@ -180,10 +187,12 @@ async function loadStrategyDocs(): Promise<KbDoc[]> {
   for (const section of sections) {
     const body = section.body.join("\n").trim();
     if (!body) continue;
+    const slug = slugify(section.title) || "section";
     docs.push({
-      id: `strategy_${slugify(section.title) || "section"}`,
+      id: `strategy_${slug}`,
       title: `Strategy: ${section.title}`,
       surface: "/strategy",
+      anchorId: slug,
       body,
       tags: ["strategy", "memo"],
     });
