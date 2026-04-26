@@ -271,8 +271,8 @@ function Experiments({ experiments }: { experiments: DigestExperiment[] }) {
       <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
         Experiments in flight
       </div>
-      <div className="overflow-hidden rounded-md border border-border/60 bg-card">
-        <table className="w-full border-collapse text-left text-[13px]">
+      <div className="overflow-x-auto rounded-md border border-border/60 bg-card">
+        <table className="w-full min-w-[640px] border-collapse text-left text-[13px]">
           <thead>
             <tr className="border-b border-border/60 bg-muted/40 font-mono text-[9.5px] uppercase tracking-[0.18em] text-muted-foreground">
               <th className="px-4 py-2.5 font-normal">Experiment</th>

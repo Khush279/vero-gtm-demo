@@ -163,8 +163,8 @@ export default function VsSukiPage() {
             Forest pill = Vero · Ochre pill = competitor · Muted = tie
           </div>
         </div>
-        <div className="overflow-hidden rounded-md border border-border/60 bg-card">
-          <table className="w-full border-collapse text-left">
+        <div className="overflow-x-auto rounded-md border border-border/60 bg-card">
+          <table className="w-full min-w-[640px] border-collapse text-left">
             <thead>
               <tr className="border-b border-border/60 bg-muted/30">
                 <th className="w-[44%] px-4 py-2.5 font-mono text-[10px] font-normal uppercase tracking-[0.18em] text-muted-foreground">
@@ -294,7 +294,7 @@ export default function VsSukiPage() {
           </a>
           <a
             href="#"
-            className="inline-flex h-10 items-center gap-2 rounded-md border border-border bg-card px-4 text-[13.5px] text-foreground transition-colors hover:bg-muted"
+            className="inline-flex h-10 items-center gap-2 rounded-md border border-border/60 bg-card px-4 text-[13.5px] text-foreground transition-colors hover:bg-muted"
           >
             Connect me with a clinician using both
           </a>

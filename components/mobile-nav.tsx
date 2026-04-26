@@ -43,6 +43,7 @@ const NAV = [
   { href: "/demo-script", label: "Demo script" },
   { href: "/chat", label: "Chat" },
   { href: "/qa-summary", label: "Q&A summary" },
+  { href: "/board-deck", label: "Board deck" },
   { href: "/press-release", label: "Press" },
   { href: "/contracts", label: "Contracts" },
   { href: "/sources", label: "Sources" },
@@ -75,7 +76,7 @@ export function MobileNav() {
   }, [open]);
 
   return (
-    <div className="md:hidden">
+    <div className="print-hide md:hidden">
       <button
         type="button"
         aria-label="Open menu"

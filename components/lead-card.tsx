@@ -89,7 +89,7 @@ export function LeadCard({ lead, onDragStart, onDragEnd, isDragging }: LeadCardP
         href={`/lead/${lead.id}`}
         className={cn(
           "block rounded-md border border-border/60 bg-card p-3 transition-all",
-          "hover:ring-1 hover:ring-primary/20 hover:border-border",
+          "hover:ring-1 hover:ring-primary/20 hover:border-primary/30",
         )}
       >
         <div className="flex items-start justify-between gap-2">

@@ -36,7 +36,7 @@ export default function RootLayout({
         <main className="mx-auto w-full max-w-7xl px-6 py-8 md:px-10 md:py-12">
           {children}
         </main>
-        <footer className="mx-auto w-full max-w-7xl px-6 pb-10 pt-16 text-[11.5px] text-muted-foreground md:px-10">
+        <footer className="print-hide mx-auto w-full max-w-7xl px-6 pb-10 pt-16 text-[11.5px] text-muted-foreground md:px-10">
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-border/60 pt-6">
             <span className="font-mono uppercase tracking-[0.18em]">
               Vero GTM demo · Khush Agarwala · 48-hour build

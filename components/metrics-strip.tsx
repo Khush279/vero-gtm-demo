@@ -73,7 +73,9 @@ function Cell({ metric }: { metric: MetricSnapshot }) {
           fillColor={sparkColor}
           ariaLabel={`${metric.label} 4-week trend`}
         />
-      ) : null}
+      ) : (
+        <div aria-hidden className="h-[18px] w-[72px]" />
+      )}
       <div className="space-y-0.5">
         {metric.deltaFromBaseline ? (
           <div className={cn("text-xs tabular-nums", deltaTone)}>

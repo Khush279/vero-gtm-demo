@@ -151,19 +151,19 @@ export default function CaseStudyPage() {
         <div className="mt-5 flex flex-wrap items-center gap-3 text-[13px] text-muted-foreground">
           <Link
             href="/pipeline"
-            className="rounded-md border border-border bg-card px-3 py-1.5 transition-colors hover:bg-muted"
+            className="rounded-md border border-border/60 bg-card px-3 py-1.5 transition-colors hover:bg-muted"
           >
             See her cohort in pipeline
           </Link>
           <Link
             href={`/lead/${cs.leadId}`}
-            className="rounded-md border border-border bg-card px-3 py-1.5 transition-colors hover:bg-muted"
+            className="rounded-md border border-border/60 bg-card px-3 py-1.5 transition-colors hover:bg-muted"
           >
             Open the live lead profile
           </Link>
           <Link
             href="/strategy"
-            className="rounded-md border border-border bg-card px-3 py-1.5 transition-colors hover:bg-muted"
+            className="rounded-md border border-border/60 bg-card px-3 py-1.5 transition-colors hover:bg-muted"
           >
             Read the 90-day plan
           </Link>

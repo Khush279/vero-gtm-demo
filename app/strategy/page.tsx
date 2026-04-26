@@ -117,7 +117,7 @@ export default async function StrategyPage() {
                   {children}
                 </a>
               ),
-              hr: () => <hr className="my-10 border-border" />,
+              hr: () => <hr className="my-10 border-border/60" />,
               strong: ({ children }) => (
                 <strong className="font-medium text-foreground">{children}</strong>
               ),
@@ -125,8 +125,8 @@ export default async function StrategyPage() {
                 <em className="font-display-italic">{children}</em>
               ),
               table: ({ children }) => (
-                <div className="mt-6 overflow-hidden rounded-md border border-border">
-                  <table className="w-full text-[13px]">{children}</table>
+                <div className="mt-6 overflow-x-auto rounded-md border border-border/60">
+                  <table className="w-full min-w-[560px] text-[13px]">{children}</table>
                 </div>
               ),
               thead: ({ children }) => (
@@ -138,7 +138,7 @@ export default async function StrategyPage() {
                 <th className="px-4 py-3 font-normal">{children}</th>
               ),
               td: ({ children }) => (
-                <td className="border-t border-border px-4 py-3 text-foreground/90">
+                <td className="border-t border-border/60 px-4 py-3 text-foreground/90">
                   {children}
                 </td>
               ),
@@ -156,7 +156,7 @@ export default async function StrategyPage() {
 
 function Placeholder() {
   return (
-    <div className="space-y-6 rounded-lg border border-dashed border-border bg-muted/30 p-8">
+    <div className="space-y-6 rounded-lg border border-dashed border-border/60 bg-muted/30 p-8">
       <div className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-muted-foreground">
         Memo pending
       </div>

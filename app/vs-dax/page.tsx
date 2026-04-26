@@ -296,7 +296,7 @@ export default function VsDaxPage() {
           </a>
           <a
             href="#"
-            className="inline-flex h-10 items-center gap-2 rounded-md border border-border bg-card px-4 text-[13.5px] text-foreground transition-colors hover:bg-muted"
+            className="inline-flex h-10 items-center gap-2 rounded-md border border-border/60 bg-card px-4 text-[13.5px] text-foreground transition-colors hover:bg-muted"
           >
             Connect me with a clinician using both
           </a>

@@ -171,8 +171,8 @@ export default function AnalyticsPage() {
           title="Top 10 Vero blog pages by estimated organic traffic"
           subtitle="Pulled from public SERP data. Replace with Search Console exports day 1."
         />
-        <div className="overflow-hidden rounded-lg border border-border bg-card">
-          <table className="w-full text-[13px]">
+        <div className="overflow-x-auto rounded-lg border border-border/60 bg-card">
+          <table className="w-full min-w-[680px] text-[13px]">
             <thead className="bg-muted/40 text-left font-mono text-[10.5px] uppercase tracking-[0.18em] text-muted-foreground">
               <tr>
                 <th className="px-4 py-3 font-normal">Page</th>
@@ -229,7 +229,7 @@ export default function AnalyticsPage() {
           {KEYWORDS.map((k) => (
             <article
               key={k.keyword}
-              className="flex flex-col gap-3 rounded-lg border border-border bg-card p-5"
+              className="flex flex-col gap-3 rounded-lg border border-border/60 bg-card p-5 transition-colors hover:border-primary/30"
             >
               <div className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-primary">
                 {k.keyword}
@@ -276,8 +276,8 @@ export default function AnalyticsPage() {
           title="Funnel attribution by source"
           subtitle="Last-touch model. Multi-touch modelling is week-3 work, after the GA4 → BigQuery export is wired."
         />
-        <div className="overflow-hidden rounded-lg border border-border bg-card">
-          <table className="w-full text-[13px]">
+        <div className="overflow-x-auto rounded-lg border border-border/60 bg-card">
+          <table className="w-full min-w-[760px] text-[13px]">
             <thead className="bg-muted/40 text-left font-mono text-[10.5px] uppercase tracking-[0.18em] text-muted-foreground">
               <tr>
                 <th className="px-4 py-3 font-normal">Source</th>
@@ -331,7 +331,7 @@ export default function AnalyticsPage() {
           title="One-page experiment proposal"
           subtitle="The first A/B test I'd ship in week 1."
         />
-        <article className="rounded-lg border border-border bg-card p-6">
+        <article className="rounded-lg border border-border/60 bg-card p-6">
           <div className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-primary">
             Experiment 001 · Pricing-page hero anchor
           </div>

@@ -99,3 +99,154 @@
     );
   }
 }
+
+/* ──────────────────────────────────────────────────────────────────────────
+ * Print styles — clean PDFs via Cmd+P → Save as PDF.
+ *
+ * Targeted surfaces: /qa-summary, /strategy, /press-release, /case-study,
+ * /interview-prep. Founders open these pages and ask "can I share this with
+ * my cofounder?" — print = clean PDF makes that a one-click answer.
+ *
+ * Rules only fire under @media print so nothing changes on screen.
+ * ────────────────────────────────────────────────────────────────────────── */
+@media print {
+  /* Page geometry. Slightly larger bottom for breathing room above the
+     printer's own page-x-of-y footer if it's enabled. */
+  @page {
+    margin: 18mm 18mm 22mm 18mm;
+  }
+
+  /* Hide chrome: top nav, mobile nav button/sheet, global footer, anything
+     opt-in via .print-hide / .no-print, and the Print this button island
+     (it's a button so excluding it keeps the printed output clean). */
+  header.print-hide,
+  footer.print-hide,
+  nav.print-hide,
+  .print-hide,
+  .no-print,
+  button {
+    display: none !important;
+  }
+
+  /* But: keep page-content headers (e.g. <PageHeader>) and press-release
+     <header> elements visible. They opt in with .print-keep, which wins
+     over the broad header rule above via the more specific class match. */
+  .print-keep,
+  header.print-keep,
+  .print-keep header,
+  .print-keep footer {
+    display: revert !important;
+  }
+
+  /* Ink-savings reset. Drop background fills + tints, force black-ish text.
+     Cards, callouts, and forest/ochre tints all collapse to plain blocks so
+     the printer doesn't waste toner on decorative panels. */
+  html,
+  body {
+    background: #ffffff !important;
+    color: #111111 !important;
+  }
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    /* Preserve text color for headings/links via more specific rules below;
+       this just kills the muted/translucent foreground tokens. */
+    color: inherit !important;
+  }
+
+  /* Re-establish a couple of intentional accents in print so the document
+     doesn't read as a flat block of text. */
+  h1, h2, h3, h4 {
+    color: #111111 !important;
+  }
+  a {
+    color: #1a1a1a !important;
+    text-decoration: underline;
+  }
+
+  /* Reset the page container so content uses the full @page box. The on-screen
+     <main> has max-w-7xl + padding; on paper we want edge-to-edge of the
+     printable area. */
+  main {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Strip card chrome — borders, rounded corners, drop shadows on
+     article/section wrappers. Keep a thin separator above sections so the
+     document still has structure. */
+  article,
+  section,
+  figure,
+  aside {
+    border: 0 !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Page-break controls. Avoid orphaned headings and split sections. */
+  h1, h2, h3, h4 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+  section,
+  figure,
+  blockquote,
+  li,
+  tr {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Typography for paper. Serif body, mono for code/labels, slightly tighter
+     line-height than screen so memos don't sprawl across many pages. */
+  body {
+    font-family: Georgia, "Times New Roman", serif !important;
+    font-size: 11pt !important;
+    line-height: 1.5 !important;
+  }
+  pre, code, kbd, samp {
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace !important;
+    font-size: 9.5pt !important;
+  }
+
+  /* Kill any animation/transition cost during print rasterization. */
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  /* Inline-link URL annotation. After any external or absolute internal
+     link, append the href in muted mono so a printed memo still tells the
+     reader where things point. Skip nav-style links via .no-print-url. */
+  a[href^="http"]::after,
+  a[href^="/"]::after {
+    content: " (" attr(href) ")";
+    font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+    font-size: 8.5pt;
+    color: #555555;
+    word-break: break-all;
+  }
+  a[href^="mailto:"]::after,
+  a[href^="tel:"]::after {
+    content: "";
+  }
+  .no-print-url::after,
+  .no-print-url a::after {
+    content: "" !important;
+  }
+
+  /* Images/SVGs scale down so a logo or chart never blows out the printable
+     width. */
+  img, svg {
+    max-width: 100% !important;
+    height: auto !important;
+    page-break-inside: avoid;
+  }
+}

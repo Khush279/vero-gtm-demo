@@ -32,6 +32,7 @@ const NAV = [
   { href: "/demo-script", label: "Demo script" },
   { href: "/chat", label: "Chat" },
   { href: "/qa-summary", label: "Q&A summary" },
+  { href: "/board-deck", label: "Board deck" },
   { href: "/press-release", label: "Press" },
   { href: "/contracts", label: "Contracts" },
   { href: "/sources", label: "Sources" },
@@ -41,7 +42,7 @@ const NAV = [
 export function TopNav() {
   const pathname = usePathname();
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur-xl">
+    <header className="print-hide sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur-xl">
       <div className="mx-auto flex h-14 w-full max-w-7xl items-center justify-between px-6 md:px-10">
         <Link href="/" className="flex items-center gap-2.5">
           <span aria-hidden className="relative inline-flex h-6 w-6 items-center justify-center">
