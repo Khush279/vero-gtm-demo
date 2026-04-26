@@ -47,7 +47,7 @@ function SlideShell({
   return (
     <article
       id={id}
-      className="slide-card relative flex aspect-[16/9] w-full flex-col rounded-2xl border border-border/70 bg-card p-10 shadow-sm md:p-14"
+      className="slide-card relative flex aspect-[16/9] w-full flex-col rounded-2xl border border-border/60 bg-card p-10 shadow-sm md:p-14"
     >
       {children}
       <div className="pointer-events-none absolute bottom-4 right-6 font-mono text-[10.5px] uppercase tracking-[0.22em] text-muted-foreground/70 tabular-nums">

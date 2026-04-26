@@ -23,7 +23,7 @@ export function AnnounceCard({
         "flex h-full flex-col rounded-xl border bg-card shadow-sm",
         isPrimary
           ? "border-forest-400/70 ring-1 ring-forest-300/60"
-          : "border-border/70",
+          : "border-border/60",
       )}
       aria-label={`${post.toneLabel} announcement draft`}
     >

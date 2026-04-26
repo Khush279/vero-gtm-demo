@@ -37,7 +37,7 @@ export default function NotFound() {
       <section className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {NOT_FOUND_MAP.map((group) => (
           <div key={group.label} className="space-y-3">
-            <div className="space-y-1 border-b border-border/70 pb-3">
+            <div className="space-y-1 border-b border-border/60 pb-3">
               <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
                 {group.kicker}
               </div>
@@ -50,7 +50,7 @@ export default function NotFound() {
                 <li key={route.href}>
                   <Link
                     href={route.href}
-                    className="group block rounded-md border border-border bg-card p-3 transition-colors hover:bg-muted/50"
+                    className="group block rounded-md border border-border/60 bg-card p-3 transition-colors hover:border-primary/30 hover:bg-muted/50"
                   >
                     <div className="flex items-center justify-between gap-3">
                       <span className="font-mono text-[12px] text-foreground group-hover:text-primary">

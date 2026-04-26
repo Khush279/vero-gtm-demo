@@ -47,7 +47,7 @@ export default function BoardDeckPage() {
       {/* Meeting frame: a small mono strip echoing the deck.preamble */}
       <section
         aria-label="Meeting frame"
-        className="rounded-2xl border border-border/70 bg-card px-5 py-4 shadow-sm"
+        className="rounded-2xl border border-border/60 bg-card px-5 py-4 shadow-sm"
       >
         <div className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-muted-foreground">
           {DECK.forMeeting} · {DECK.presenter}

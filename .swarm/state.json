@@ -1,6 +1,6 @@
 {
-  "wave": 11,
-  "shipped_summary": "35 user-facing surfaces, branded icons + manifest + sitemap + robots, 11 OG variants, 108 vitest tests, footnoted strategy.",
+  "wave": 12,
+  "shipped_summary": "38 user-facing surfaces, branded icons + sitemap + manifest, 11 OG variants, 108 vitest tests, footnoted strategy, refreshed README.",
   "shipped": [
     {"wave": 1, "result": "10 surfaces"},
     {"wave": 2, "result": "/experiments /playbooks /day1 + 65 tests + Loom + README"},
@@ -11,26 +11,26 @@
     {"wave": 7, "result": "/demo-script /channel-mix /onboarding-plan /vs-summary /chat (4/6 hit org limit; finished gaps)"},
     {"wave": 8, "result": "/press-release /contracts /qa-summary"},
     {"wave": 9, "result": "/board-deck /not-found print stylesheet polish-pass-12-fixes"},
+    {"wave": 10, "result": "/docs /map site-icons sitemap manifest footnoted-strategy"},
     {
-      "wave": 10,
+      "wave": 11,
       "workers": [
-        "10.1: /docs 3-tour walkthrough + legend + FAQ",
-        "10.2: site icons + robots + sitemap + manifest",
-        "10.3: /map 33-route site-map",
-        "10.4: strategy memo footnotes (16 distinct, 18 markers, 3 TBD)"
+        "11.1: /announce 3 LinkedIn drafts (713/1195/435 chars)",
+        "11.2: /sql 5 real Postgres queries + analysis callouts",
+        "11.3: /faq 47 entries across 6 categories with URL filter",
+        "11.4: README + MOBILE_AUDIT refresh for 35+ surfaces"
       ],
-      "result": "All 4 clean. Default favicon removed."
+      "result": "All 4 clean."
     }
   ],
   "in_flight": [],
-  "next_wave_11_candidates": [
-    "Add /diff page showing weekly metric deltas across 4 weeks (uses existing data)",
-    "Wire /chat citations to deep-link with anchor IDs in target page",
-    "Add anchor IDs to /strategy and /interview-prep section headings so /chat citations can scroll-to",
-    "Add a /vs-* meta page that lists future comparisons (Heidi, Augmedix, Doximity Scribe) Khush would write",
-    "Build a /announce page — the LinkedIn announcement Khush would post on day 1",
-    "Add /sql page mocking the 5 SQL queries Khush would write week 1 against the warehouse",
-    "Add /faq page distilling the FAQ across docs/objections/vs-tali into one page",
-    "Tighten the README to match the bigger demo surface count"
+  "next_wave_12_candidates": [
+    "Add /diff page showing weekly metric deltas across 4 weeks",
+    "Wire /chat citations to deep-link with anchor IDs",
+    "Add a /vs-list meta page indexing future comparisons (Heidi, Augmedix, Doximity Scribe)",
+    "Add /retro page mocking the day-90 retro Khush would write",
+    "Add a /scorecard mock — quarterly OKR/KR rollup",
+    "Add /budget — line-item Q4 GTM budget mock",
+    "Bring back the polish pass for the new wave-10/11 surfaces (didn't audit those)"
   ]
 }

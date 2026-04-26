@@ -48,7 +48,7 @@ export default function AnnouncePage() {
       {/* Tone notes */}
       <section
         aria-label="Tone notes"
-        className="space-y-4 rounded-xl border border-border/70 bg-card px-6 py-6 md:px-8 md:py-7"
+        className="space-y-4 rounded-xl border border-border/60 bg-card px-6 py-6 md:px-8 md:py-7"
       >
         <h2 className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-muted-foreground">
           Tone notes
