@@ -25,7 +25,9 @@ const NAV = [
   { href: "/automations", label: "Automations" },
   { href: "/enterprise", label: "Enterprise" },
   { href: "/analytics", label: "Analytics" },
+  { href: "/metrics", label: "Metrics" },
   { href: "/strategy", label: "Strategy" },
+  { href: "/sources", label: "Sources" },
 ];
 
 export function MobileNav() {
