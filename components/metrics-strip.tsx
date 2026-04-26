@@ -1,5 +1,7 @@
 import { cn } from "@/lib/utils";
 import type { MetricSnapshot } from "@/data/metrics-dashboard";
+import { Sparkline } from "@/components/sparkline";
+import { generateTrend, parseMetricValue } from "@/lib/series";
 
 /**
  * Dense 6-cell metric strip used at the top of the strategy page. Each cell
@@ -37,6 +39,23 @@ function Cell({ metric }: { metric: MetricSnapshot }) {
       : metric.status === "watch"
         ? "text-ochre-700"
         : "text-destructive";
+
+  // Sparkline color tracks the same status palette as the delta line so the
+  // strip reads as one mood per cell. We only render it when the value
+  // string parses to a number.
+  const sparkColor =
+    metric.status === "on-track"
+      ? "#234738" // forest-700
+      : metric.status === "watch"
+        ? "#7a4c14" // ochre-700
+        : "hsl(var(--destructive))";
+
+  const parsed = parseMetricValue(metric.value);
+  const series =
+    parsed !== null
+      ? generateTrend(parsed * 0.7, parsed, 4, 0.05, metric.label)
+      : null;
+
   return (
     <div className="flex flex-col justify-between gap-2 bg-card p-3">
       <div className="font-mono text-[9px] uppercase tracking-[0.18em] text-muted-foreground">
@@ -45,6 +64,16 @@ function Cell({ metric }: { metric: MetricSnapshot }) {
       <div className="font-display text-[22px] font-light leading-none tracking-tight tabular-nums text-foreground">
         {metric.value}
       </div>
+      {series ? (
+        <Sparkline
+          values={series}
+          width={72}
+          height={18}
+          strokeColor={sparkColor}
+          fillColor={sparkColor}
+          ariaLabel={`${metric.label} 4-week trend`}
+        />
+      ) : null}
       <div className="space-y-0.5">
         {metric.deltaFromBaseline ? (
           <div className={cn("text-xs tabular-nums", deltaTone)}>

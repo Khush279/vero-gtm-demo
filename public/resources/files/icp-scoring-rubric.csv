@@ -1,0 +1,26 @@
+dimension,weight,scoring_band_low,scoring_band_high,label,points
+formula,1.0,,,score = specialty * city_tier * experience * segment * competitor_pressure * 100,
+specialty,1.0,family medicine,family medicine,Family practice (wedge),1.0
+specialty,1.0,general practice,general practice,General practice (wedge),1.0
+specialty,1.0,internal medicine,internal medicine,Internal medicine (wedge),1.0
+specialty,0.7,psychiatry,psychiatry,Psychiatry (adjacent),0.7
+specialty,0.6,paediatrics,pediatrics,Paediatrics (adjacent),0.6
+specialty,0.4,other,other,Outside wedge specialty,0.4
+city_tier,1.0,Toronto,Mississauga,T1: Toronto / Ottawa / Mississauga,1.0
+city_tier,0.8,Hamilton,Windsor,T2: Hamilton / London / Brampton / Markham / Kitchener / Waterloo / Windsor,0.8
+city_tier,0.7,other ON,other ON,T3: rest of Ontario,0.7
+experience,0.5,0,4,Resident or new attending (0 to 4 yrs registered),0.5
+experience,1.0,5,15,Mid-career sweet spot (5 to 15 yrs registered),1.0
+experience,0.85,16,25,Senior (16 to 25 yrs registered),0.85
+experience,0.6,26,99,Late career (26+ yrs registered),0.6
+segment,1.0,solo,solo,Solo clinic (best fit),1.0
+segment,0.85,group,group,Group practice (multi-physician),0.85
+segment,0.7,specialty,specialty,Specialty group,0.7
+segment,0.5,enterprise,enterprise,Hospital or system (enterprise lane),0.5
+competitor_pressure,1.0,0,0,No nearby Tali / Heidi / DAX presence,1.0
+competitor_pressure,0.9,1,1,1 nearby competitor within 5km,0.9
+competitor_pressure,0.75,2,2,2 nearby competitors within 5km,0.75
+competitor_pressure,0.6,3,99,3+ nearby competitors (saturated),0.6
+threshold,,,,Score >= 75 routes to active sequence,
+threshold,,,,Score 50 to 74 routes to nurture (90-day touch),
+threshold,,,,Score < 50 stays in research bucket,

@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "Vero GTM Week-1 Dashboard",
+  "version": "1.0.0",
+  "purpose": "Monday-morning Slack digest covering the six numbers that tell whoever ran the engine last week whether to ship, kill, or double a variant.",
+  "delivery": {
+    "channel": "#gtm",
+    "cadence": "weekly",
+    "day": "Monday",
+    "time": "08:00",
+    "timezone": "America/Toronto",
+    "format": "slack_blocks_with_csv_attachment"
+  },
+  "ownership": {
+    "primary": "GTM engineer",
+    "fallback": "founder on call",
+    "alertChannel": "#gtm-alerts"
+  },
+  "metrics": [
+    {
+      "id": "weekly_send_volume",
+      "label": "Weekly send volume",
+      "unit": "count",
+      "source": "Attio",
+      "sourceQuery": "sequence.touches WHERE sent_at >= last_monday AND sent_at < this_monday",
+      "thresholds": {
+        "on_track": ">= 200",
+        "watch": "100 to 199",
+        "off_track": "< 100"
+      },
+      "baseline": "week 0 = 0",
+      "notes": "Snapshot is cut once per week so the trend line doesn't get noisy."
+    },
+    {
+      "id": "reply_rate",
+      "label": "Reply rate",
+      "unit": "percent",
+      "source": "Postmark inbound parser",
+      "sourceQuery": "replies.classified / sends.total WHERE week = last_iso_week",
+      "thresholds": {
+        "on_track": ">= 4.0",
+        "watch": "2.5 to 3.9",
+        "off_track": "< 2.5"
+      },
+      "baseline": "Tali public benchmark: 2.1%",
+      "notes": "Excludes auto-replies and bounces from numerator and denominator."
+    },
+    {
+      "id": "demo_book_rate",
+      "label": "Demo book rate",
+      "unit": "percent",
+      "source": "HubSpot meetings",
+      "sourceQuery": "meetings.booked / replies.positive WHERE week = last_iso_week",
+      "thresholds": {
+        "on_track": ">= 25",
+        "watch": "15 to 24",
+        "off_track": "< 15"
+      },
+      "baseline": "plan: 25%",
+      "notes": "Counts only first-touch demos; reschedules don't double-count."
+    },
+    {
+      "id": "trial_start_rate",
+      "label": "Trial start rate",
+      "unit": "percent",
+      "source": "HubSpot post-demo + Stripe trial event",
+      "sourceQuery": "trials.started / demos.completed WHERE week = last_iso_week",
+      "thresholds": {
+        "on_track": ">= 40",
+        "watch": "30 to 39",
+        "off_track": "< 30"
+      },
+      "baseline": "plan: 40%",
+      "notes": "Trial start triggers a Stripe customer event; HubSpot is the source of truth for demo completion."
+    },
+    {
+      "id": "arr_added",
+      "label": "ARR added",
+      "unit": "cad",
+      "source": "Stripe new paid",
+      "sourceQuery": "SUM(subscriptions.annual_value) WHERE first_paid_at BETWEEN last_monday AND this_monday",
+      "thresholds": {
+        "on_track": ">= 2000",
+        "watch": "500 to 1999",
+        "off_track": "< 500"
+      },
+      "baseline": "week 0 = $0",
+      "notes": "Counted at first successful charge, not at trial start. Annualised from monthly ACV."
+    },
+    {
+      "id": "time_to_first_touch_median",
+      "label": "Time-to-first-touch (median)",
+      "unit": "minutes",
+      "source": "Vercel cron / lead route",
+      "sourceQuery": "PERCENTILE(touch_1.sent_at - lead.imported_at, 0.5) WHERE week = last_iso_week",
+      "thresholds": {
+        "on_track": "<= 15",
+        "watch": "16 to 60",
+        "off_track": "> 60"
+      },
+      "baseline": "plan: 50 minutes",
+      "notes": "Measured in business minutes, not wall-clock. Auto-pause windows (overnight, weekend) are subtracted."
+    }
+  ],
+  "segments": [
+    {
+      "id": "by_emr_cohort",
+      "label": "Reply rate by EMR cohort",
+      "values": ["oscar", "telus_pss", "telus_med_access", "accuro", "input_health", "unknown"],
+      "rationale": "Variance across cohorts is the single most actionable signal we get."
+    },
+    {
+      "id": "by_city_tier",
+      "label": "Reply rate by city tier",
+      "values": ["t1", "t2", "rest_of_ontario"],
+      "rationale": "Tells us whether T1 saturation is depressing the global number or the rest is."
+    },
+    {
+      "id": "by_subject_variant",
+      "label": "Open rate by subject-line variant",
+      "values": ["price_anchor", "hours_back", "control"],
+      "rationale": "Drives the next A/B kill or double decision."
+    }
+  ],
+  "qualitativeSignal": {
+    "label": "Top 5 positive replies, copy-pasted",
+    "rule": "Sales reads these out loud in Tuesday review. This is the signal the dashboard does not surface.",
+    "redaction": "Lead names replaced with first-name-only; clinic names redacted unless customer."
+  },
+  "alerts": [
+    {
+      "id": "suppression_spike",
+      "trigger": "suppression_adds_this_week / sends_this_week > 0.02",
+      "action": "Pause queue. Page GTM engineer in #gtm-alerts.",
+      "severity": "high"
+    },
+    {
+      "id": "reply_rate_collapse",
+      "trigger": "reply_rate < 2.0 for 2 consecutive weeks",
+      "action": "Pause new sequence variants. Founder review.",
+      "severity": "high"
+    },
+    {
+      "id": "time_to_first_touch_breach",
+      "trigger": "time_to_first_touch_median > 60",
+      "action": "Notify in #gtm. Auto-create Linear ticket against the cron.",
+      "severity": "medium"
+    }
+  ],
+  "exports": {
+    "csv": {
+      "filename": "vero-gtm-week-{{isoWeek}}.csv",
+      "destination": "s3://vero-gtm-reports/weekly/",
+      "retention_days": 365
+    },
+    "slack_thread": {
+      "channel": "#gtm",
+      "thread_root": "Monday digest {{isoDate}}",
+      "follow_ups": ["top 5 replies", "alerts (if any)", "next week's planned variant"]
+    }
+  }
+}

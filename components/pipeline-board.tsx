@@ -22,6 +22,8 @@ import {
   type Segment,
 } from "@/lib/types";
 import { LeadCard } from "@/components/lead-card";
+import { Sparkline } from "@/components/sparkline";
+import { generateTrend } from "@/lib/series";
 
 type ScoreBand = "all" | "high" | "mid" | "low";
 
@@ -357,8 +359,14 @@ export function PipelineBoard({ leads }: { leads: Lead[] }) {
                   <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
                     {label}
                   </div>
-                  <div className="font-mono text-[11px] tabular-nums text-muted-foreground/80">
-                    {items.length}
+                  <div className="flex items-center gap-2">
+                    <StageSparkline
+                      stageId={id}
+                      currentCount={items.length}
+                    />
+                    <div className="font-mono text-[11px] tabular-nums text-muted-foreground/80">
+                      {items.length}
+                    </div>
                   </div>
                 </div>
                 <div className="flex max-h-[70vh] flex-col gap-2 overflow-y-auto p-2">
@@ -384,6 +392,39 @@ export function PipelineBoard({ leads }: { leads: Lead[] }) {
         </div>
       </div>
     </div>
+  );
+}
+
+/**
+ * Tiny per-column sparkline showing a 7-day stage-velocity trend. The series
+ * is generated deterministically from the stage id so the shape is stable
+ * across renders, then we color "growing" stages forest and "stale" stages
+ * (current count <= start) in ochre. Pure SVG via the shared component.
+ */
+function StageSparkline({
+  stageId,
+  currentCount,
+}: {
+  stageId: PipelineStage;
+  currentCount: number;
+}) {
+  // Anchor the trend so the rightmost point matches the live count. Use a
+  // small per-stage drift seeded by the id to vary the back-history.
+  const driftSeed = stageId.charCodeAt(0) + stageId.length;
+  const drift = ((driftSeed % 7) - 3) * 0.6; // roughly -1.8 .. +1.8
+  const start = Math.max(0, currentCount - drift * 1.5 - 1);
+  const series = generateTrend(start, currentCount, 7, 0.08, stageId);
+  const isGrowing = series[series.length - 1] >= series[0];
+  const stroke = isGrowing ? "#3d7457" /* forest-500 */ : "#bf801f" /* ochre-500 */;
+  return (
+    <Sparkline
+      values={series}
+      width={40}
+      height={16}
+      strokeColor={stroke}
+      showEndDot={false}
+      ariaLabel={`${stageId} 7-day count trend`}
+    />
   );
 }
 

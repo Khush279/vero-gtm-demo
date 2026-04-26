@@ -13,6 +13,7 @@ import { PageHeader } from "@/components/page-header";
 import { LeadProfile } from "@/components/lead-profile";
 import { SequencePane } from "@/components/sequence-pane";
 import { LeadMobileCta } from "@/components/lead-mobile-cta";
+import { ObjectionHandler } from "@/components/objection-handler";
 import { findLead } from "@/data/leads";
 
 type Params = { id: string };
@@ -78,6 +79,20 @@ export default function LeadDetailPage({ params }: { params: Params }) {
         <LeadProfile lead={lead} />
         <SequencePane leadId={lead.id} />
       </div>
+
+      <section className="mt-12 border-t border-border/60 pt-8">
+        <div className="mb-5 max-w-2xl space-y-2">
+          <div className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-muted-foreground">
+            Objection handling
+          </div>
+          <p className="text-[13.5px] leading-relaxed text-muted-foreground">
+            If they reply, here is what they will likely push back on. Five
+            most-common objections for this segment, each with a scripted
+            response and a follow-up ask.
+          </p>
+        </div>
+        <ObjectionHandler compactMode />
+      </section>
 
       <LeadMobileCta leadId={lead.id} />
     </div>

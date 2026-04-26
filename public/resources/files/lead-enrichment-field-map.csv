@@ -1,0 +1,25 @@
+source,source_field,target_field,transformation,required,notes
+cpso_register,cpso_id,Lead.id,prefix with "lead_" then zero-pad to 4 digits,yes,Stable across re-imports; used as Attio external_id
+cpso_register,full_name,Lead.name,trim + Title Case + strip post-nominal letters except MD,yes,Strip "MBBS, MD, CCFP" tail; keep "Dr." off the name field
+cpso_register,specialty,Lead.specialty,verbatim string passthrough,yes,Used by lib/scoring.ts specialty regex (family / general practice / internal medicine wins)
+cpso_register,year_of_registration,Lead.yearRegistered,parse as integer,yes,Drives experience band; reject row if not parseable
+cpso_register,languages_spoken,Lead.languages,split on comma + trim,no,Defaults to ["English"] if empty
+cpso_register,practice_address_line_1,Lead.practiceAddress,verbatim trim,yes,Combined with practice_name in render layer
+cpso_register,practice_city,Lead.city,append ", ON" if no province suffix,yes,Used by city-tier weight (T1 vs T2 vs rest)
+derived,clinic_name + city,Lead.inferredEmr,heuristic match against EMR provider directories,no,"Defaults to ""unknown""; never guess. Wrong EMR mention tanks the send."
+derived,practice_size_signal,Lead.segment,"solo if 1 physician, group if 2-5, specialty if non-FP, enterprise if hospital-affiliated",yes,Used by segment weight
+derived,nearby_competitor_count,Lead.nearbyCompetitorPresence,count Tali / Heidi / DAX customers within 5km,yes,Mocked in demo; real source is internal customer geocode + competitor scrape
+computed,scoreLead(lead),Lead.score,specialty * city_tier * experience * segment * competitor_pressure * 100 rounded,yes,Recalc nightly so rubric edits propagate without redeploy
+computed,now() - imported_at,Lead.daysInStage,integer days,yes,Resets when stage changes
+constant,"""new""",Lead.stage,literal,yes,All freshly imported leads start here
+constant,null,Lead.nextTouchAt,literal null,yes,Set by sequencer on first send
+constant,null,Lead.lastContactedAt,literal null,yes,Set by sequencer on first send
+constant,"""cpso_register""",Lead.source,literal,yes,Attribution; used by analytics funnel
+attio,Lead.id,attio.lead.external_id,passthrough,yes,Idempotency key for re-import
+attio,Lead.score,attio.lead.icp_score,passthrough,yes,Routes leads scoring >= 75 into active sequence
+attio,Lead.inferredEmr,attio.lead.emr_cohort,enum mapping,no,Backs the EMR-cohort column on weekly rollup
+attio,Lead.stage,attio.lead.pipeline_stage,enum mapping,yes,Visualised on /pipeline board
+attio,Lead.segment,attio.lead.segment,enum mapping,yes,Filters specialty / enterprise into separate lanes
+attio,Lead.score < 50,suppression.list,add if true,yes,Below-threshold leads never enter the sequencer
+hand_review,Lead.inferredEmr,gate,"flag for review if specialty is family medicine and inferredEmr is unknown",yes,One of two fields that must be hand-reviewed before send
+hand_review,Lead.practiceAddress,gate,"flag for review if no postal code or unit number",yes,The other field. Bad addresses cause bounce-rate spikes.

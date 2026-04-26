@@ -8,15 +8,20 @@ import { MobileNav } from "@/components/mobile-nav";
 const NAV = [
   { href: "/", label: "Home" },
   { href: "/pipeline", label: "Pipeline" },
+  { href: "/case-study", label: "Case study" },
   { href: "/day1", label: "Day 1" },
   { href: "/experiments", label: "Experiments" },
   { href: "/playbooks", label: "Playbooks" },
   { href: "/automations", label: "Automations" },
   { href: "/enterprise", label: "Enterprise" },
+  { href: "/vs-tali", label: "vs Tali" },
+  { href: "/calculator", label: "Calculator" },
+  { href: "/objections", label: "Objections" },
   { href: "/analytics", label: "Analytics" },
   { href: "/metrics", label: "Metrics" },
   { href: "/strategy", label: "Strategy" },
   { href: "/sources", label: "Sources" },
+  { href: "/resources", label: "Resources" },
 ];
 
 export function TopNav() {

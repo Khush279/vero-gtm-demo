@@ -1,6 +1,7 @@
 import { ArrowDown, ArrowUp, Minus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { MetricSnapshot, MetricStatus } from "@/data/metrics-dashboard";
+import { generateTrend } from "@/lib/series";
 
 /**
  * Editorial delta table. Pairs each WEEK_1 row with its WEEK_4 counterpart,
@@ -115,11 +116,12 @@ export function DeltaTable({
         <table className="w-full border-collapse text-left">
           <thead>
             <tr className="border-b border-border/60 bg-muted/30">
-              <Th className="w-[34%]">Metric</Th>
-              <Th className="w-[14%] text-right">Week 1</Th>
-              <Th className="w-[14%] text-right">Week 4</Th>
-              <Th className="w-[18%] text-right">Delta</Th>
-              <Th className="w-[20%] text-right">Status</Th>
+              <Th className="w-[28%]">Metric</Th>
+              <Th className="w-[12%] text-right">Week 1</Th>
+              <Th className="w-[12%] text-right">Week 4</Th>
+              <Th className="w-[14%] text-right">Trend</Th>
+              <Th className="w-[16%] text-right">Delta</Th>
+              <Th className="w-[18%] text-right">Status</Th>
             </tr>
           </thead>
           <tbody>
@@ -153,6 +155,36 @@ export function DeltaTable({
 
               const status = w4?.status ?? w1.status;
 
+              // Build a 6-week trend from week_minus_4 (extrapolated back from
+              // week 1) through week 4, plus one muted "projected" ghost dot
+              // one week out. Stable per-row via the metric label as seed.
+              const w1Num = parseNumeric(w1.value);
+              const w4Num = w4 ? parseNumeric(w4.value) : null;
+              const trendStroke =
+                isImprovement === false
+                  ? "hsl(var(--destructive))"
+                  : "#234738"; // forest-700 for flat or improving
+              let trendSvg: React.ReactNode = null;
+              if (w1Num !== null && w4Num !== null) {
+                // Walk back 4 weeks from week_1 by the same per-step delta as
+                // week_1 → week_4 but dampened, so the back-projection feels
+                // continuous rather than mirrored.
+                const stepDelta = (w4Num - w1Num) / 3;
+                const wMinus4 = w1Num - stepDelta * 1.4;
+                const series = generateTrend(wMinus4, w4Num, 6, 0.05, w1.label);
+                // Project one week out by extrapolating the last segment.
+                const lastDelta = series[5] - series[4];
+                const projected = w4Num + lastDelta * 0.6;
+                const allValues = [...series, projected];
+                trendSvg = (
+                  <SparklineWithGhost
+                    values={allValues}
+                    strokeColor={trendStroke}
+                    label={`${w1.label} 6-week trend with 1-week projection`}
+                  />
+                );
+              }
+
               return (
                 <tr
                   key={w1.label}
@@ -171,6 +203,13 @@ export function DeltaTable({
                   </td>
                   <td className="px-4 py-3 text-right font-mono text-[13px] tabular-nums text-foreground">
                     {w4?.value ?? "–"}
+                  </td>
+                  <td className="px-4 py-3 text-right">
+                    <div className="inline-flex justify-end">
+                      {trendSvg ?? (
+                        <span className="text-muted-foreground/40">–</span>
+                      )}
+                    </div>
                   </td>
                   <td className="px-4 py-3 text-right">
                     <div
@@ -223,6 +262,84 @@ function Th({
     >
       {children}
     </th>
+  );
+}
+
+/**
+ * Sparkline variant for the delta table: renders a 6-point connected series
+ * plus a single muted "projection" ghost dot detached from the line. The
+ * muted dot uses a paler stroke so the eye reads it as forward-looking.
+ */
+function SparklineWithGhost({
+  values,
+  strokeColor,
+  label,
+  width = 88,
+  height = 22,
+}: {
+  values: number[]; // 7 points: 6 historical + 1 projection
+  strokeColor: string;
+  label: string;
+  width?: number;
+  height?: number;
+}) {
+  const PAD = 2;
+  const innerW = width - PAD * 2;
+  const innerH = height - PAD * 2;
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  const span = max - min || 1;
+  const pts = values.map((v, i) => {
+    const x = PAD + (i / (values.length - 1)) * innerW;
+    const y = PAD + (1 - (v - min) / span) * innerH;
+    return { x, y };
+  });
+  // Historical line: first 6 points, connected.
+  const histPts = pts.slice(0, 6);
+  const linePath = histPts
+    .map((p, i) => `${i === 0 ? "M" : "L"}${p.x.toFixed(2)},${p.y.toFixed(2)}`)
+    .join(" ");
+  const last = histPts[histPts.length - 1];
+  const ghost = pts[pts.length - 1];
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox={`0 0 ${width} ${height}`}
+      role="img"
+      aria-label={label}
+      className="inline-block align-middle"
+    >
+      <path
+        d={linePath}
+        fill="none"
+        stroke={strokeColor}
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <circle cx={last.x} cy={last.y} r={2.25} fill={strokeColor} />
+      {/* Faint connector to the ghost dot, dashed and dim. */}
+      <line
+        x1={last.x}
+        y1={last.y}
+        x2={ghost.x}
+        y2={ghost.y}
+        stroke="currentColor"
+        strokeOpacity={0.25}
+        strokeWidth={1}
+        strokeDasharray="2 2"
+      />
+      <circle
+        cx={ghost.x}
+        cy={ghost.y}
+        r={2}
+        fill="none"
+        stroke="currentColor"
+        strokeOpacity={0.45}
+        strokeWidth={1}
+      />
+    </svg>
   );
 }
 
