@@ -56,6 +56,9 @@ const NAV = [
   { href: "/retro", label: "Retro" },
   { href: "/scorecard", label: "Scorecard" },
   { href: "/budget", label: "Budget" },
+  { href: "/diff", label: "Diff" },
+  { href: "/tour", label: "Tour" },
+  { href: "/credit", label: "Credit" },
 ];
 
 export function MobileNav() {

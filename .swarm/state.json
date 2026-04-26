@@ -1,6 +1,6 @@
 {
-  "wave": 12,
-  "shipped_summary": "38 user-facing surfaces, branded icons + sitemap + manifest, 11 OG variants, 108 vitest tests, footnoted strategy, refreshed README.",
+  "wave": 13,
+  "shipped_summary": "41 user-facing surfaces, branded icons + sitemap + manifest, 11 OG variants, 108 vitest tests, footnoted strategy, refreshed README. 12 waves done.",
   "shipped": [
     {"wave": 1, "result": "10 surfaces"},
     {"wave": 2, "result": "/experiments /playbooks /day1 + 65 tests + Loom + README"},
@@ -12,25 +12,24 @@
     {"wave": 8, "result": "/press-release /contracts /qa-summary"},
     {"wave": 9, "result": "/board-deck /not-found print stylesheet polish-pass-12-fixes"},
     {"wave": 10, "result": "/docs /map site-icons sitemap manifest footnoted-strategy"},
+    {"wave": 11, "result": "/announce /sql /faq + README+MOBILE_AUDIT refresh"},
     {
-      "wave": 11,
+      "wave": 12,
       "workers": [
-        "11.1: /announce 3 LinkedIn drafts (713/1195/435 chars)",
-        "11.2: /sql 5 real Postgres queries + analysis callouts",
-        "11.3: /faq 47 entries across 6 categories with URL filter",
-        "11.4: README + MOBILE_AUDIT refresh for 35+ surfaces"
+        "12.1: /retro day-90 honest retrospective (9 items)",
+        "12.2: /scorecard 4 objectives x 12 KRs",
+        "12.3: /budget $180k Q4 line-item",
+        "12.4: 6 surgical polish fixes on wave 10/11"
       ],
       "result": "All 4 clean."
     }
   ],
   "in_flight": [],
-  "next_wave_12_candidates": [
-    "Add /diff page showing weekly metric deltas across 4 weeks",
-    "Wire /chat citations to deep-link with anchor IDs",
-    "Add a /vs-list meta page indexing future comparisons (Heidi, Augmedix, Doximity Scribe)",
-    "Add /retro page mocking the day-90 retro Khush would write",
-    "Add a /scorecard mock — quarterly OKR/KR rollup",
-    "Add /budget — line-item Q4 GTM budget mock",
-    "Bring back the polish pass for the new wave-10/11 surfaces (didn't audit those)"
+  "honest_assessment": "41 surfaces is past the founder-attention horizon. Future ticks should consolidate, not expand. Best ROI from here: deploy to Vercel, record the Loom, and have someone do a cold read of /docs and the 3-min tour.",
+  "next_wave_13_candidates_if_continuing": [
+    "Add a small /diff page showing weekly metric deltas (last small-content add I'd consider)",
+    "Wire /chat citations to deep-link with section anchor IDs",
+    "Add a /credit page acknowledging the data sources, fonts, libraries used (small + ethical)",
+    "Build an /index page that's shorter than /map — top-12 most-relevant routes for the interview"
   ]
 }
