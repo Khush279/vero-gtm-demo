@@ -42,6 +42,9 @@ const NAV = [
   { href: "/vs-summary", label: "vs Summary" },
   { href: "/demo-script", label: "Demo script" },
   { href: "/chat", label: "Chat" },
+  { href: "/qa-summary", label: "Q&A summary" },
+  { href: "/press-release", label: "Press" },
+  { href: "/contracts", label: "Contracts" },
   { href: "/sources", label: "Sources" },
   { href: "/resources", label: "Resources" },
 ];
