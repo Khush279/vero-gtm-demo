@@ -37,6 +37,11 @@ const NAV = [
   { href: "/weekly-digest", label: "Digest" },
   { href: "/strategy", label: "Strategy" },
   { href: "/interview-prep", label: "Q&A" },
+  { href: "/onboarding-plan", label: "Onboarding" },
+  { href: "/channel-mix", label: "Channel mix" },
+  { href: "/vs-summary", label: "vs Summary" },
+  { href: "/demo-script", label: "Demo script" },
+  { href: "/chat", label: "Chat" },
   { href: "/sources", label: "Sources" },
   { href: "/resources", label: "Resources" },
 ];

@@ -164,8 +164,8 @@ export default function VsTaliPage() {
             Forest pill = Vero · Ochre pill = Tali · Muted = tie
           </div>
         </div>
-        <div className="overflow-hidden rounded-md border border-border/60 bg-card">
-          <table className="w-full border-collapse text-left">
+        <div className="overflow-x-auto rounded-md border border-border/60 bg-card">
+          <table className="w-full min-w-[640px] border-collapse text-left">
             <thead>
               <tr className="border-b border-border/60 bg-muted/30">
                 <th className="w-[44%] px-4 py-2.5 font-mono text-[10px] font-normal uppercase tracking-[0.18em] text-muted-foreground">
