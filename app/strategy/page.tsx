@@ -3,6 +3,8 @@ import path from "path";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { PageHeader } from "@/components/page-header";
+import { MetricsStrip } from "@/components/metrics-strip";
+import { WEEK_1_METRICS } from "@/data/metrics-dashboard";
 
 /**
  * /strategy — renders the 30/60/90 memo from data/strategy.md.
@@ -30,6 +32,11 @@ export default async function StrategyPage() {
         kicker="JD: Foundational impact · build Vero's GTM from scratch"
         title={<>The 90-day plan.</>}
         subtitle="What I'd actually do, week by week."
+      />
+
+      <MetricsStrip
+        caption="Week 1 dashboard mock — projected from current send volume and historical reply baselines"
+        metrics={WEEK_1_METRICS}
       />
 
       <article className="memo max-w-3xl">

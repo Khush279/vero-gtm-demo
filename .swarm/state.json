@@ -1,0 +1,19 @@
+{
+  "wave": 2,
+  "started_at": "2026-04-26T02:00:00Z",
+  "shipped": [
+    {
+      "wave": 1,
+      "workers": [
+        "A: data + libs + strategy memo + automation source",
+        "B: pipeline board with drag/drop + filters",
+        "C: lead detail + draft API + Attio integration",
+        "D: automations page with view-source",
+        "E: enterprise + RFP playbook",
+        "F: landing + analytics + strategy renderer + README"
+      ],
+      "result": "all 7 surfaces green; production build clean; pushed to https://github.com/Khush279/vero-gtm-demo"
+    }
+  ],
+  "in_flight": []
+}
