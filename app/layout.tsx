@@ -4,9 +4,22 @@ import { TopNav } from "@/components/top-nav";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Vero GTM — built by Khush Agarwala",
+  metadataBase: new URL("https://vero-gtm-demo.vercel.app"),
+  title: {
+    default: "Vero GTM · Khush Agarwala",
+    template: "%s · Vero GTM",
+  },
   description:
-    "A founding GTM engineer interview demo for Vero (veroscribe.com). Built in 48 hours.",
+    "Founding GTM Engineer interview demo for Vero (veroscribe.com). 10 surfaces. 500 real Ontario family physicians. Built in 48 hours.",
+  openGraph: {
+    title: "Vero GTM · Khush Agarwala",
+    description:
+      "Founding GTM Engineer interview demo for Vero. 10 surfaces. Built in 48 hours.",
+    type: "website",
+    url: "https://vero-gtm-demo.vercel.app",
+  },
+  twitter: { card: "summary_large_image", title: "Vero GTM · Khush Agarwala" },
+  robots: { index: false, follow: false },
 };
 
 export default function RootLayout({

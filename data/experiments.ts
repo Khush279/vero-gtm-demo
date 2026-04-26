@@ -59,7 +59,7 @@ export const EXPERIMENTS: Experiment[] = [
     id: "exp_emr_personalization",
     title: "EMR-named first line",
     hypothesis:
-      "If the opening line names the inferred EMR by brand, reply rate in T1 cities (Toronto, Mississauga, Brampton, Hamilton, Ottawa) lifts by ≥ 30% because workflow-specific language signals the sender actually understands the recipient's day.",
+      "If the opening line names the inferred EMR by brand, reply rate in T1 cities (Toronto, Mississauga, Brampton, Hamilton, Ottawa) lifts by ≥ 30% because workflow-specific language signals the sender understands the recipient's day.",
     rationale:
       "The CPSO scrape and clinic enrichment job already infer EMR for roughly 70% of the list. The marginal cost of the variant is one prompt-template branch. If it works, it unlocks the same pattern across every other touch in the cadence and feeds the EMR-aware template work in the day-30 plan.",
     setup: {

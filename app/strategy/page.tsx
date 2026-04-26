@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { promises as fs } from "fs";
 import path from "path";
 import ReactMarkdown from "react-markdown";
@@ -5,6 +6,12 @@ import remarkGfm from "remark-gfm";
 import { PageHeader } from "@/components/page-header";
 import { MetricsStrip } from "@/components/metrics-strip";
 import { WEEK_1_METRICS } from "@/data/metrics-dashboard";
+
+export const metadata: Metadata = {
+  title: "Strategy",
+  description:
+    "The 30/60/90 memo: where Vero is today, why family practice in Ontario is the wedge, the competitive read on Tali, and a week-by-week plan.",
+};
 
 /**
  * /strategy — renders the 30/60/90 memo from data/strategy.md.
@@ -31,11 +38,11 @@ export default async function StrategyPage() {
       <PageHeader
         kicker="JD: Foundational impact · build Vero's GTM from scratch"
         title={<>The 90-day plan.</>}
-        subtitle="What I'd actually do, week by week."
+        subtitle="What I'd do, week by week."
       />
 
       <MetricsStrip
-        caption="Week 1 dashboard mock — projected from current send volume and historical reply baselines"
+        caption="Week 1 dashboard mock, projected from current send volume and historical reply baselines"
         metrics={WEEK_1_METRICS}
       />
 

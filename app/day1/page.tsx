@@ -11,9 +11,16 @@
  * thought through Tuesday morning at 9:02. This page is that proof.
  */
 
+import type { Metadata } from "next";
 import { PageHeader } from "@/components/page-header";
 import { Day1Timeline } from "@/components/day1-timeline";
 import { DAY_ONE_BLOCKS } from "@/data/day1";
+
+export const metadata: Metadata = {
+  title: "Day 1",
+  description:
+    "Hour-by-hour plan for my first day at Vero. Click any block to expand or hit start the day to watch the engine come online in real time.",
+};
 
 export default function Day1Page() {
   return (

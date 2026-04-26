@@ -3,10 +3,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { MobileNav } from "@/components/mobile-nav";
 
 const NAV = [
   { href: "/", label: "Home" },
   { href: "/pipeline", label: "Pipeline" },
+  { href: "/day1", label: "Day 1" },
   { href: "/experiments", label: "Experiments" },
   { href: "/playbooks", label: "Playbooks" },
   { href: "/automations", label: "Automations" },
@@ -65,6 +67,8 @@ export function TopNav() {
             );
           })}
         </nav>
+
+        <MobileNav />
       </div>
     </header>
   );

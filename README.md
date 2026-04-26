@@ -10,7 +10,7 @@ Seven surfaces, each mapped one-to-one against a JD bullet, all wired to the sam
 
 ## For Adeel
 
-I built this instead of writing a cover letter because the role is to ship, and a cover letter felt like the wrong artifact to send a physician-founder hiring for execution. Every lead in `/pipeline` is a real Ontario family physician from the CPSO public register, scored against an ICP I derived from Vero's own positioning. Every email draft is calibrated to what a clinician actually feels at 6:47pm with twelve charts left to close. None of it is sent. The demo is the cover letter.
+I built this instead of writing a cover letter because the role is to ship, and a cover letter felt like the wrong artifact to send a physician-founder hiring for execution. Every lead in `/pipeline` is a real Ontario family physician from the CPSO public register, scored against an ICP I derived from Vero's own positioning. Every email draft is calibrated to what a clinician feels at 6:47pm with twelve charts left to close. None of it is sent. The demo is the cover letter.
 
 ## For Bill
 

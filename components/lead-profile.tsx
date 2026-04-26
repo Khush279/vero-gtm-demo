@@ -20,10 +20,10 @@ function stageLabel(stage: Lead["stage"]): string {
 }
 
 function competitorNote(count: number): string {
-  if (count <= 0) return "No Tali / Heidi mentions within 5km — green-field market.";
-  if (count === 1) return `1 Tali / Heidi mention within 5km — light competitive pressure.`;
-  if (count === 2) return `2 Tali / Heidi mentions within 5km — moderate competitive pressure.`;
-  return `${count} Tali / Heidi mentions within 5km — competitive pressure: high`;
+  if (count <= 0) return "No Tali / Heidi mentions within 5km. Green-field market.";
+  if (count === 1) return `1 Tali / Heidi mention within 5km. Light competitive pressure.`;
+  if (count === 2) return `2 Tali / Heidi mentions within 5km. Moderate competitive pressure.`;
+  return `${count} Tali / Heidi mentions within 5km. Competitive pressure: high.`;
 }
 
 function SectionLabel({ children }: { children: React.ReactNode }) {

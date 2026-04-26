@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { PageHeader } from "@/components/page-header";
 
 /**
@@ -5,6 +6,12 @@ import { PageHeader } from "@/components/page-header";
  * Server component. All numbers are illustrative and footnoted as such; the
  * point is to show the shape of the analysis, not to manufacture authority.
  */
+
+export const metadata: Metadata = {
+  title: "Analytics",
+  description:
+    "Top 10 organic blog pages, three keyword bets, last-touch funnel attribution by source, and a one-page A/B test proposal ready for week 1.",
+};
 
 type BlogRow = {
   slug: string;

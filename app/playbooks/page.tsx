@@ -10,9 +10,16 @@
  * PlaybookCard.
  */
 
+import type { Metadata } from "next";
 import { PageHeader } from "@/components/page-header";
 import { PlaybookCard } from "@/components/playbook-card";
 import { PLAYBOOKS } from "@/data/playbooks";
+
+export const metadata: Metadata = {
+  title: "Playbooks",
+  description:
+    "Three reusable GTM motions written as operating manuals: solo-clinic outbound, enterprise VoR conversion, and SERP-defending content.",
+};
 
 export default function PlaybooksPage() {
   const totalSections = PLAYBOOKS.reduce((sum, p) => sum + p.sections.length, 0);

@@ -6,6 +6,7 @@
  * to the client board for filters and drag-and-drop.
  */
 
+import type { Metadata } from "next";
 import { PageHeader } from "@/components/page-header";
 import { PipelineBoard } from "@/components/pipeline-board";
 import { LEADS } from "@/data/leads";
@@ -14,6 +15,12 @@ import {
   type Lead,
   type PipelineStage,
 } from "@/lib/types";
+
+export const metadata: Metadata = {
+  title: "Pipeline",
+  description:
+    "Attio-style CRM board for 500 Ontario family physicians from the CPSO public register, scored and stage-bucketed with weighted ARR roll-up.",
+};
 
 /** Vero list price baseline used in the strategy memo: $720 CAD ARR / seat. */
 const ARR_PER_LEAD = 720;
@@ -69,7 +76,7 @@ export default function PipelinePage() {
       <PageHeader
         kicker="JD: Architect and own the CRM"
         title={<>The pipeline.</>}
-        subtitle="Eight stages, seeded from the CPSO public register. Drag to reassign — state is in-memory so the demo resets on reload. Score, segment, and specialty filters narrow the board the way you'd actually work it on a Monday."
+        subtitle="Eight stages, seeded from the CPSO public register. Drag to reassign; state is in-memory so the demo resets on reload. Score, segment, and specialty filters narrow the board the way you'd work it on a Monday."
       />
 
       {/* Roll-up strip */}
@@ -104,7 +111,7 @@ export default function PipelinePage() {
           </div>
         </div>
         <div className="border-t border-border/40 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground/70">
-          Convert rates illustrative — replace with cohort math from Attio in
+          Convert rates illustrative; replace with cohort math from Attio in
           week 1
         </div>
       </div>

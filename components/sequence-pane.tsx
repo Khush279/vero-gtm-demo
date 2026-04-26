@@ -10,7 +10,7 @@
  * - Banner pinned at top: "Demo only — never sent to real clinicians".
  */
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import type { Sequence, Touch } from "@/lib/types";
 
@@ -116,6 +116,23 @@ export function SequencePane({ leadId }: { leadId: string }) {
     }
   }
 
+  // Bridge to the mobile sticky CTA bar. LeadMobileCta dispatches a
+  // `lead:generate` CustomEvent on window so the two components stay
+  // decoupled — the bar doesn't need a ref into this pane and the pane
+  // doesn't need to know the bar exists. Stash `generate` in a ref so
+  // the listener always fires the latest closure (current tone, leadId).
+  const generateRef = useRef(generate);
+  useEffect(() => {
+    generateRef.current = generate;
+  });
+  useEffect(() => {
+    const handler = () => {
+      void generateRef.current();
+    };
+    window.addEventListener("lead:generate", handler);
+    return () => window.removeEventListener("lead:generate", handler);
+  }, []);
+
   return (
     <section className="space-y-5">
       {/* Demo-only banner */}
@@ -199,7 +216,7 @@ export function SequencePane({ leadId }: { leadId: string }) {
             No drafts yet.
           </p>
           <p className="mx-auto mt-1 max-w-md text-[13px] text-muted-foreground">
-            Pick a tone and generate. Each touch leans on a different leverage point —
+            Pick a tone and generate. Each touch leans on a different leverage point:
             price anchor, doc-upload differentiator, Ontario VoR + PIPEDA, peer adoption.
           </p>
         </div>

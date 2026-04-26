@@ -8,12 +8,19 @@
  * passed as a prop to the client AutomationCard which owns the expand state.
  */
 
+import type { Metadata } from "next";
 import { AUTOMATIONS } from "@/data/automations";
 import { AutomationCard } from "@/components/automation-card";
 import { PageHeader } from "@/components/page-header";
 import { readAutomationSource } from "@/lib/read-source";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Automations",
+  description:
+    "Five running GTM jobs in TypeScript, each card opens to its actual source code read off disk at request time so the snippet cannot drift.",
+};
 
 type LoadedAutomation = {
   id: string;

@@ -51,7 +51,7 @@ function Cell({ metric }: { metric: MetricSnapshot }) {
             {metric.deltaFromBaseline}
           </div>
         ) : (
-          <div className="text-xs text-muted-foreground/40">—</div>
+          <div className="text-xs text-muted-foreground/40">–</div>
         )}
         <div className="font-mono text-[9px] text-muted-foreground/70">
           {metric.source}

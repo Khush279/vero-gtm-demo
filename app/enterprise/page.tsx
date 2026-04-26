@@ -12,6 +12,7 @@
  * pipeline in week 1.
  */
 
+import type { Metadata } from "next";
 import { PageHeader } from "@/components/page-header";
 import { EnterpriseCard } from "@/components/enterprise-card";
 import { ENTERPRISE } from "@/data/enterprise";
@@ -23,6 +24,12 @@ import {
   SOC2_STATUS,
   SECURITY_QUESTIONNAIRE,
 } from "@/data/rfp-answers";
+
+export const metadata: Metadata = {
+  title: "Enterprise",
+  description:
+    "Hospital-system pipeline with named champions and a pre-filled Ontario Health Vendor of Record response template covering the six standard procurement questions.",
+};
 
 /**
  * Stage-weighted ARR. We don't want a flat sum (every prospect at $X) — that
@@ -64,7 +71,7 @@ const DAY_ONE_PRIORITIES = [
   "Pull every Ontario Health VoR-eligible institution into a named-account list and assign owner / next-touch in Attio inside week 1.",
   "Stand up a one-page RFP-response generator that ingests Vero's existing security docs and outputs the six answer blocks below pre-filled per institution.",
   "Map procurement champions (CMIO, CIO, privacy officer) at the top 10 Ontario systems and seed warm intros via OntarioMD and the OHA networks.",
-  "Templatise the SOC 2 Type I evidence packet so a procurement reviewer gets it within 24 hours of asking — the bar most early vendors miss.",
+  "Templatise the SOC 2 Type I evidence packet so a procurement reviewer gets it within 24 hours of asking. That's the bar most early vendors miss.",
   "Build a quarterly enterprise pipeline review with Adeel and Bill: stage progression, weighted ARR, blocker log, and one experiment per quarter on procurement velocity.",
 ];
 
@@ -117,7 +124,7 @@ export default function EnterprisePage() {
           </div>
           {accounts.length === 0 ? (
             <div className="rounded-md border border-dashed border-border/60 bg-card/40 p-6 text-center text-[13px] text-muted-foreground">
-              No enterprise accounts loaded yet — populated from{" "}
+              No enterprise accounts loaded yet. Populated from{" "}
               <span className="font-mono">data/enterprise.json</span>.
             </div>
           ) : (

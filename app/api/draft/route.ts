@@ -92,7 +92,7 @@ function mockedTouch(lead: Lead, plan: TouchPlan, tone: Tone): Touch {
       ? `Hi Dr. ${fname.split(" ").pop() ?? fname},`
       : tone === "conversational"
         ? `Hi ${fname},`
-        : `Dr. ${fname.split(" ").pop() ?? fname} —`;
+        : `Dr. ${fname.split(" ").pop() ?? fname},`;
 
   const sign =
     tone === "direct"
@@ -108,12 +108,12 @@ function mockedTouch(lead: Lead, plan: TouchPlan, tone: Tone): Touch {
     case "price_anchor": {
       subject =
         tone === "skeptical"
-          ? `${specialty} in ${city}: $59.99/mo vs Tali's $300+ — worth 3 minutes?`
-          : `Vero for ${specialty} in ${city} — $59.99/mo`;
+          ? `${specialty} in ${city}: $59.99/mo vs Tali's $300+. Worth 3 minutes?`
+          : `Vero for ${specialty} in ${city}, $59.99/mo`;
       body = [
         opener,
         "",
-        `I work on Vero — an AI scribe built for ${specialty} workflows. Two reasons this lands in your inbox:`,
+        `I work on Vero, an AI scribe built for ${specialty} workflows. Two reasons this lands in your inbox:`,
         "",
         `1. Pricing. Vero is $59.99/mo (or $720/yr). Tali AI runs ~$300/mo, DAX is ~10x that. Same SOAP-quality output, a quarter to a tenth of the spend.`,
         `2. Fit. We have 150+ specialty templates, including ones tuned for ${specialty}, so the first note out of the box doesn't read like a generic transcription.`,
@@ -133,7 +133,7 @@ function mockedTouch(lead: Lead, plan: TouchPlan, tone: Tone): Touch {
       body = [
         opener,
         "",
-        `Quick follow-up. The thing most ${specialty} clinicians I talk to in ${city} hit a wall on isn't transcription — it's the lab PDF, the consult letter, the patient-history doc you actually want the scribe to read into the note.`,
+        `Quick follow-up. The thing most ${specialty} clinicians I talk to in ${city} hit a wall on isn't transcription. It's the lab PDF, the consult letter, the patient-history doc you want the scribe to read into the note.`,
         "",
         `Vero ingests uploaded documents (PDFs, images, prior reports) and weaves them into the structured note. So the LDL value or the cardiology consult shows up in your A&P without you re-typing it.`,
         "",
@@ -147,15 +147,15 @@ function mockedTouch(lead: Lead, plan: TouchPlan, tone: Tone): Touch {
     case "ontario_vor": {
       subject =
         tone === "skeptical"
-          ? `Procurement question: PIPEDA + Ontario VoR — Vero's already on both`
-          : `Ontario Health VoR + PIPEDA — already cleared`;
+          ? `Procurement question: PIPEDA + Ontario VoR, Vero's already on both`
+          : `Ontario Health VoR + PIPEDA, already cleared`;
       body = [
         opener,
         "",
         `Two things that come up the moment a clinic lawyer or hospital privacy officer reviews an AI scribe:`,
         "",
         `· PIPEDA + PHIPA: Vero is fully compliant. Data stays in Canadian regions, BAA-equivalent agreements available, audit logs on by default.`,
-        `· Ontario Health Vendor of Record: Vero is already on the VoR list — which means clinics and hospital systems can procure us without re-running a full RFP.`,
+        `· Ontario Health Vendor of Record: Vero is already on the VoR list, which means clinics and hospital systems can procure us without re-running a full RFP.`,
         "",
         `For a ${specialty} practice in ${city} on ${emr}, that usually compresses procurement from 6+ weeks to 1–2.`,
         "",
@@ -169,16 +169,16 @@ function mockedTouch(lead: Lead, plan: TouchPlan, tone: Tone): Touch {
     case "peer_adoption": {
       subject =
         tone === "skeptical"
-          ? `Last note — peers in ${city} are already using Vero`
+          ? `Last note. Peers in ${city} are already using Vero`
           : `${specialty} colleagues in ${city} on Vero`;
       body = [
         opener,
         "",
-        `Last one from me. A handful of ${specialty} practices in and around ${city} have moved to Vero in the last few months — most cited two reasons: the doc-upload feature, and that the per-provider cost actually pencils for a community practice.`,
+        `Last one from me. A handful of ${specialty} practices in and around ${city} have moved to Vero in the last few months. Most cited two reasons: the doc-upload feature, and that the per-provider cost pencils for a community practice.`,
         "",
-        `If you'd rather see it from a peer than a vendor, I can connect you with one of them — no demo required, just a 10-min call to hear how it slotted into their day on ${emr}.`,
+        `If you'd rather see it from a peer than a vendor, I can connect you with one of them. No demo required, just a 10-min call to hear how it slotted into their day on ${emr}.`,
         "",
-        `If now isn't the right time, no follow-ups from me — I'll close the loop here.`,
+        `If now isn't the right time, no follow-ups from me. I'll close the loop here.`,
         "",
         sign,
       ].join("\n");

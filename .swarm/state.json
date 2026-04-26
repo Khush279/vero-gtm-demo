@@ -1,5 +1,5 @@
 {
-  "wave": 2,
+  "wave": 3,
   "started_at": "2026-04-26T02:00:00Z",
   "shipped": [
     {
@@ -13,7 +13,27 @@
         "F: landing + analytics + strategy renderer + README"
       ],
       "result": "all 7 surfaces green; production build clean; pushed to https://github.com/Khush279/vero-gtm-demo"
+    },
+    {
+      "wave": 2,
+      "workers": [
+        "1: vitest test suite (65 tests passing)",
+        "2: /experiments page (5 GTM experiments)",
+        "3: /playbooks page (3 reusable playbooks) [partial — completed manually after worker hit org limit]",
+        "4: /day1 interactive 9-block timeline",
+        "5: strategy memo deepening + week-1 metrics strip [partial — components/metrics-strip + page wiring completed manually]",
+        "6: Loom script + README polish + mobile audit"
+      ],
+      "result": "10 surfaces live (added /experiments, /playbooks, /day1). Tests green. Em dashes scrubbed. Pushed to GitHub."
     }
   ],
-  "in_flight": []
+  "in_flight": [],
+  "next_wave_3_candidates": [
+    "Polish pass on /pipeline UI density and empty-state",
+    "Add SEO meta + opengraph card per surface",
+    "Add a /metrics admin-style page hosting both WEEK_1 + WEEK_4 strips",
+    "Add a tiny Slack-thread mockup component to /day1 to show the day-end brief",
+    "Run a copy pass: scrub every page for AI-tells / em dashes / weasel words",
+    "Add a /sources page with all data + claim citations"
+  ]
 }

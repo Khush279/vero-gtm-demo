@@ -12,16 +12,17 @@ import type { Metadata } from "next";
 import { PageHeader } from "@/components/page-header";
 import { LeadProfile } from "@/components/lead-profile";
 import { SequencePane } from "@/components/sequence-pane";
+import { LeadMobileCta } from "@/components/lead-mobile-cta";
 import { findLead } from "@/data/leads";
 
 type Params = { id: string };
 
 export function generateMetadata({ params }: { params: Params }): Metadata {
   const lead = findLead(params.id);
-  if (!lead) return { title: "Lead not found · Vero GTM" };
+  if (!lead) return { title: "Lead not found" };
   return {
-    title: `${lead.name} · ${lead.specialty} · Vero GTM`,
-    description: `Outbound workspace for ${lead.name} (${lead.city}).`,
+    title: `${lead.name} · ${lead.specialty}`,
+    description: `Enriched outbound workspace for ${lead.name} (${lead.specialty}, ${lead.city}) with an AI-drafted 4-touch sequence and inferred EMR.`,
   };
 }
 
@@ -58,7 +59,7 @@ export default function LeadDetailPage({ params }: { params: Params }) {
   if (!lead) return <NotFound id={params.id} />;
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-10 pb-24 md:pb-0">
       <PageHeader
         kicker="JD: Lifecycle flows · lead routing · nurture sequences"
         title={<>{lead.name}</>}
@@ -77,6 +78,8 @@ export default function LeadDetailPage({ params }: { params: Params }) {
         <LeadProfile lead={lead} />
         <SequencePane leadId={lead.id} />
       </div>
+
+      <LeadMobileCta leadId={lead.id} />
     </div>
   );
 }

@@ -9,9 +9,16 @@
  * structured, runnable test plans.
  */
 
+import type { Metadata } from "next";
 import { EXPERIMENTS } from "@/data/experiments";
 import { ExperimentList } from "@/components/experiment-card";
 import { PageHeader } from "@/components/page-header";
+
+export const metadata: Metadata = {
+  title: "Experiments",
+  description:
+    "Five week-1 GTM experiments with hypothesis, primary metric, sample size, and decision rule per card. Each is small enough to ship in a day.",
+};
 
 export default function ExperimentsPage() {
   return (

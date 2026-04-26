@@ -379,7 +379,7 @@ Why this works:
 - A clinician comparing two products has already read the competitor's marketing site. If our page does not acknowledge what they already know to be true, they discount everything else we say.
 - Conversion data is unambiguous. Pages with an honest "where they're stronger" section convert 1.4-1.8x higher than pages without one. The credibility tax pays back at the funnel bottom.
 
-The constraint: never concede something that is not true. If the competitor is not actually stronger in an area, do not invent a concession to look balanced. Reviewers smell that immediately.`,
+The constraint: never concede something that is not true. If the competitor is not stronger in an area, do not invent a concession to look balanced. Reviewers smell that immediately.`,
       },
       {
         heading: "CTA placement strategy",

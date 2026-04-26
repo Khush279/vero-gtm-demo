@@ -18,7 +18,7 @@ That's the work I want to do.
 
 **6 to 9 months.** Procurement bypass the Ontario Health VoR badge gives any FHT, OHT, or hospital-affiliated clinic. No US competitor has it. Tali doesn't trade on it the way Vero can. The moat compounds the more we use it.
 
-**14,200.** Family physicians in Ontario (CIHI 2024), of whom ~10,500 are reachable via the CPSO public register. Finite, knowable, segmentable. A TAM you can actually finish.
+**14,200.** Family physicians in Ontario (CIHI 2024), of whom ~10,500 are reachable via the CPSO public register. Finite, knowable, segmentable. A TAM you can finish.
 
 Where the next $1M of GTM spend goes is sitting in /pipeline.
 

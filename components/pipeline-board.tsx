@@ -155,7 +155,7 @@ export function PipelineBoard({ leads }: { leads: Lead[] }) {
           Pipeline
         </div>
         <p className="mt-3 text-[14px] text-muted-foreground">
-          No leads yet — ingest pipeline running…
+          No leads yet. Ingest pipeline running…
         </p>
       </div>
     );
