@@ -39,6 +39,9 @@ const NAV = [
   { href: "/resources", label: "Resources" },
   { href: "/docs", label: "Docs" },
   { href: "/map", label: "Map" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/sql", label: "SQL" },
+  { href: "/announce", label: "Announce" },
 ];
 
 export function TopNav() {
