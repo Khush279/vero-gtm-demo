@@ -33,7 +33,13 @@ function Cell({ cell, dim }: { cell: FeatureCell; dim?: boolean }) {
   );
 }
 
-function WinnerPill({ who }: { who: FeatureRow["whoWins"] }) {
+function WinnerPill({
+  who,
+  competitorLabel,
+}: {
+  who: FeatureRow["whoWins"];
+  competitorLabel: string;
+}) {
   if (who === "vero") {
     return (
       <span className="inline-flex items-center rounded-full border border-forest-200 bg-forest-50 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.16em] text-forest-700">
@@ -44,7 +50,7 @@ function WinnerPill({ who }: { who: FeatureRow["whoWins"] }) {
   if (who === "tali") {
     return (
       <span className="inline-flex items-center rounded-full border border-ochre-200 bg-ochre-50 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.16em] text-ochre-700">
-        Tali
+        {competitorLabel}
       </span>
     );
   }
@@ -58,9 +64,12 @@ function WinnerPill({ who }: { who: FeatureRow["whoWins"] }) {
 export function VsFeatureRow({
   row,
   zebra,
+  competitorLabel = "Tali",
 }: {
   row: FeatureRow;
   zebra?: boolean;
+  /** Display name to show in the winner pill when whoWins === "tali". */
+  competitorLabel?: string;
 }) {
   return (
     <tr
@@ -84,7 +93,7 @@ export function VsFeatureRow({
         <Cell cell={row.tali} dim={row.whoWins === "vero"} />
       </td>
       <td className="px-4 py-3.5 text-right align-top">
-        <WinnerPill who={row.whoWins} />
+        <WinnerPill who={row.whoWins} competitorLabel={competitorLabel} />
       </td>
     </tr>
   );

@@ -1,32 +1,35 @@
 {
-  "wave": 5,
+  "wave": 6,
   "started_at": "2026-04-26T02:00:00Z",
   "shipped": [
     {"wave": 1, "result": "10 surfaces, prod build clean, GitHub up"},
     {"wave": 2, "result": "/experiments /playbooks /day1 + 65 tests + Loom + README"},
     {"wave": 3, "result": "SEO meta + OG/Twitter + mobile hamburger + sticky lead CTA + copy scrub"},
+    {"wave": 4, "result": "/sources /metrics /opengraph-image + Slack mock + reference customers + keyboard shortcuts"},
     {
-      "wave": 4,
+      "wave": 5,
       "workers": [
-        "4.1: /sources citation page (18 entries, 6 categories)",
-        "4.2: Slack-thread mock under /day1 timeline",
-        "4.3: /metrics with WEEK_1 vs WEEK_4 deltas",
-        "4.4: 3 reference-customer cards on /enterprise",
-        "4.5: /opengraph-image + /twitter-image (1200x630 PNG)",
-        "4.6: keyboard-shortcut overlay (? + g+letter nav)"
+        "5.1: /case-study 28-day walkthrough (12 artifacts)",
+        "5.2: /vs-tali head-to-head (15 rows + JSON-LD FAQ schema)",
+        "5.3: /calculator interactive ROI widget (16 tests)",
+        "5.4: /objections + compact block on /lead",
+        "5.5: 22 sparklines on /metrics + /pipeline + 13 tests",
+        "5.6: /resources + 5 downloadable artifacts in /public"
       ],
-      "result": "12 surfaces live. Reference customers shipped. OG cards work. Keyboard shortcuts work. Loop driver added /metrics + /sources to top + mobile nav."
+      "result": "17 surfaces. 94 tests. Pushed."
     }
   ],
   "in_flight": [],
-  "next_wave_5_candidates": [
-    "Add a /case-study page walking through one named lead end-to-end (research → first email → reply → demo booked → trial → close)",
-    "Add an interactive prompt-debugger to /lead — show the system + user message OpenAI receives, with token count",
-    "Add a /weekly-digest page mocking the founder-facing weekly Slack digest with charts",
-    "Add sparkline charts inline on /metrics and /pipeline stage counts",
-    "Wire a small FAQ/objection handler component to /lead (4-5 common physician objections + scripted responses)",
-    "Add pricing-calculator widget to /strategy showing Vero ROI vs DAX/Suki at different practice sizes",
-    "Build a /vs-tali comparison page (Vero's content motion lives here in production)",
-    "Add a /resources downloads page (RFP template, ICP rubric, scoring spreadsheet) — paper artifacts"
+  "next_wave_6_candidates": [
+    "Add a /weekly-digest founder-facing weekly summary mock with 3 chart types",
+    "Add an interactive prompt-debugger to /lead — show the exact OpenAI system+user messages",
+    "Add a /channel-mix page with bottoms-up channel ROI by stage",
+    "Add /docs onboarding walkthrough for the demo itself (how to use this)",
+    "Add /vs-dax + /vs-suki comparison pages (matching the vs-tali pattern)",
+    "Add /timeline horizontal Gantt-style 30/60/90 visual with milestones",
+    "Add /interview-prep page with anticipated founder questions and responses",
+    "Add a /chat agent that lets founders ask questions about the demo (RAG over all data)",
+    "Add a /notes appendix with reading list, articles, source citations",
+    "Add OG-image variants per route so each shared link has a custom preview"
   ]
 }
