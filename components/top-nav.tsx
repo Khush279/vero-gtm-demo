@@ -5,50 +5,18 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { MobileNav } from "@/components/mobile-nav";
 
+// Top nav holds the seven surfaces a first-time visitor should reach without
+// thinking. Everything else is one click away via /map (the index of all 46
+// surfaces) or directly by URL. Editing nav is a content decision, not a
+// dumping ground for new pages.
 const NAV = [
   { href: "/", label: "Home" },
+  { href: "/tour", label: "Tour" },
   { href: "/pipeline", label: "Pipeline" },
   { href: "/case-study", label: "Case study" },
-  { href: "/day1", label: "Day 1" },
-  { href: "/timeline", label: "Timeline" },
-  { href: "/experiments", label: "Experiments" },
-  { href: "/playbooks", label: "Playbooks" },
-  { href: "/automations", label: "Automations" },
-  { href: "/prompt-debugger", label: "Prompts" },
-  { href: "/enterprise", label: "Enterprise" },
-  { href: "/vs-tali", label: "vs Tali" },
-  { href: "/vs-dax", label: "vs DAX" },
-  { href: "/vs-suki", label: "vs Suki" },
-  { href: "/calculator", label: "Calculator" },
-  { href: "/objections", label: "Objections" },
-  { href: "/analytics", label: "Analytics" },
-  { href: "/metrics", label: "Metrics" },
-  { href: "/weekly-digest", label: "Digest" },
   { href: "/strategy", label: "Strategy" },
-  { href: "/interview-prep", label: "Q&A" },
-  { href: "/onboarding-plan", label: "Onboarding" },
-  { href: "/channel-mix", label: "Channel mix" },
-  { href: "/vs-summary", label: "vs Summary" },
-  { href: "/demo-script", label: "Demo script" },
-  { href: "/chat", label: "Chat" },
-  { href: "/qa-summary", label: "Q&A summary" },
-  { href: "/board-deck", label: "Board deck" },
-  { href: "/press-release", label: "Press" },
-  { href: "/contracts", label: "Contracts" },
-  { href: "/sources", label: "Sources" },
-  { href: "/resources", label: "Resources" },
-  { href: "/docs", label: "Docs" },
-  { href: "/map", label: "Map" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/sql", label: "SQL" },
-  { href: "/announce", label: "Announce" },
-  { href: "/retro", label: "Retro" },
-  { href: "/scorecard", label: "Scorecard" },
-  { href: "/budget", label: "Budget" },
-  { href: "/diff", label: "Diff" },
-  { href: "/tour", label: "Tour" },
-  { href: "/credit", label: "Credit" },
-  { href: "/changelog", label: "Changelog" },
+  { href: "/vs-tali", label: "vs Tali" },
+  { href: "/map", label: "All surfaces" },
 ];
 
 export function TopNav() {

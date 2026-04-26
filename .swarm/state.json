@@ -1,6 +1,6 @@
 {
-  "wave": 16,
-  "shipped_summary": "45 surfaces, 142 vitest tests, 14 clean waves + 1 partial. Wave 15 hit budget walls.",
+  "wave": 17,
+  "shipped_summary": "46 surfaces, 142 tests, 16 waves. /candor finished solo after wave 15's worker pile-up.",
   "shipped": [
     {"wave": 1, "result": "10 surfaces"},
     {"wave": 2, "result": "/experiments /playbooks /day1 + 65 tests"},
@@ -16,21 +16,16 @@
     {"wave": 12, "result": "/retro /scorecard /budget + 6 polish fixes"},
     {"wave": 13, "result": "/diff /tour /credit"},
     {"wave": 14, "result": "/changelog + LOOM refresh + a11y fixes"},
+    {"wave": 15, "result": "+34 tests, KbDoc anchorId field. 3/3 workers had issues."},
     {
-      "wave": 15,
-      "workers": [
-        "15.1 tests: 21 + 13 = 34 new tests landed (org limit hit before site-map + changelog tests)",
-        "15.2 chat anchors: KbDoc anchorId field shipped; client wiring deferred (stream timeout)",
-        "15.3 /candor: DEFERRED (worker stalled, no files shipped)"
-      ],
-      "result": "Partial. 3/3 workers hit issues. 142/142 tests still green after loop driver fixed one test fixture."
+      "wave": 16,
+      "workers": [],
+      "loop_driver_solo": "Built /candor + data/candor.ts + site-map entry. No workers dispatched (budget signal too red)."
     }
   ],
   "in_flight": [],
-  "deferred_for_wave_16_or_later": [
-    "Finish W15.2 — add id attrs to /strategy h2/h3, /experiments cards, /playbooks cards, /sources entries, /interview-prep questions; update buildRagPrompt to include anchorId in citation directive; update chat-panel.tsx Link href to compose anchor",
-    "Finish W15.3 — build /candor easter-egg page (data + page) and add to /map under 'For the founders' group",
-    "Add tests/site-map.test.ts and tests/changelog.test.ts (data-shape sanity)"
-  ],
-  "org_budget_signal": "Wave 15 saw 3/3 workers hit issues (1 org limit, 1 stream timeout, 1 stall). Strong signal to slow dispatch cadence to >30 min between waves and reduce fan-out to 2 small workers max for next 2-3 waves."
+  "deferred": [
+    "Chat citation client wiring: id attrs on /strategy h2/h3, /experiments cards, /playbooks cards, /sources entries, /interview-prep questions; update buildRagPrompt; chat-panel Link href compose. Lib-side already shipped wave 15.",
+    "tests/site-map.test.ts and tests/changelog.test.ts (data-shape sanity)"
+  ]
 }
