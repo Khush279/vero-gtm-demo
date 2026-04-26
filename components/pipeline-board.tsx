@@ -186,6 +186,7 @@ export function PipelineBoard({ leads }: { leads: Lead[] }) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search name, city, specialty"
+            aria-label="Search leads by name, city, or specialty"
             className={cn(
               "h-8 w-[260px] rounded-md border border-border/60 bg-card pl-8 pr-3",
               "text-[13px] placeholder:text-muted-foreground/60",

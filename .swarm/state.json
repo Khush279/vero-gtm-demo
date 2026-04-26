@@ -1,6 +1,6 @@
 {
-  "wave": 13,
-  "shipped_summary": "41 user-facing surfaces, branded icons + sitemap + manifest, 11 OG variants, 108 vitest tests, footnoted strategy, refreshed README. 12 waves done.",
+  "wave": 14,
+  "shipped_summary": "44 user-facing surfaces, 13 waves shipped clean across ~50 workers, 11 OG variants, 108 vitest tests.",
   "shipped": [
     {"wave": 1, "result": "10 surfaces"},
     {"wave": 2, "result": "/experiments /playbooks /day1 + 65 tests + Loom + README"},
@@ -13,23 +13,17 @@
     {"wave": 9, "result": "/board-deck /not-found print stylesheet polish-pass-12-fixes"},
     {"wave": 10, "result": "/docs /map site-icons sitemap manifest footnoted-strategy"},
     {"wave": 11, "result": "/announce /sql /faq + README+MOBILE_AUDIT refresh"},
+    {"wave": 12, "result": "/retro /scorecard /budget + 6 polish fixes on wave 10/11"},
     {
-      "wave": 12,
+      "wave": 13,
       "workers": [
-        "12.1: /retro day-90 honest retrospective (9 items)",
-        "12.2: /scorecard 4 objectives x 12 KRs",
-        "12.3: /budget $180k Q4 line-item",
-        "12.4: 6 surgical polish fixes on wave 10/11"
+        "13.1: /diff 4-week metric trajectory + 18 annotations",
+        "13.2: /credit 33 attributions",
+        "13.3: /tour 12 ranked surfaces"
       ],
-      "result": "All 4 clean."
+      "result": "All 3 clean. /tour replaces /index due to Next routing collision."
     }
   ],
   "in_flight": [],
-  "honest_assessment": "41 surfaces is past the founder-attention horizon. Future ticks should consolidate, not expand. Best ROI from here: deploy to Vercel, record the Loom, and have someone do a cold read of /docs and the 3-min tour.",
-  "next_wave_13_candidates_if_continuing": [
-    "Add a small /diff page showing weekly metric deltas (last small-content add I'd consider)",
-    "Wire /chat citations to deep-link with section anchor IDs",
-    "Add a /credit page acknowledging the data sources, fonts, libraries used (small + ethical)",
-    "Build an /index page that's shorter than /map — top-12 most-relevant routes for the interview"
-  ]
+  "honest_assessment_v2": "44 surfaces shipped clean across 13 waves. The marginal value of new pages is now near zero — every founder-noticeable bet has been made. The remaining high-leverage moves are all OUTSIDE the codebase: deploy URL, Loom recording, cold-read review, interview-day rehearsal. Wave 14 should be very small or pause."
 }

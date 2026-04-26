@@ -180,6 +180,7 @@ export function ChatPanel() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Ask about the strategy, the funnel math, or any surface…"
+          aria-label="Ask a question"
           className="flex-1 rounded-md border border-border/70 bg-card px-3 py-2.5 text-[13.5px] text-foreground placeholder:text-muted-foreground/70 focus:border-primary/50 focus:outline-none"
         />
         <button

@@ -174,6 +174,7 @@ export function KeyboardShortcuts() {
             strokeWidth={1.8}
             strokeLinecap="round"
             strokeLinejoin="round"
+            aria-hidden
           >
             <path d="M6 6l12 12M18 6L6 18" />
           </svg>

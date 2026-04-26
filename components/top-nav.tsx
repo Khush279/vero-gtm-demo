@@ -48,6 +48,7 @@ const NAV = [
   { href: "/diff", label: "Diff" },
   { href: "/tour", label: "Tour" },
   { href: "/credit", label: "Credit" },
+  { href: "/changelog", label: "Changelog" },
 ];
 
 export function TopNav() {
