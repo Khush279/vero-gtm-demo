@@ -2,26 +2,100 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 41 35% 96%;
+    --foreground: 154 18% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 154 18% 11%;
+    --popover: 41 35% 98%;
+    --popover-foreground: 154 18% 11%;
+    --primary: 152 35% 22%;
+    --primary-foreground: 41 35% 96%;
+    --secondary: 152 22% 90%;
+    --secondary-foreground: 152 35% 18%;
+    --muted: 41 28% 92%;
+    --muted-foreground: 154 12% 36%;
+    --accent: 36 70% 49%;
+    --accent-foreground: 154 18% 11%;
+    --destructive: 0 60% 42%;
+    --destructive-foreground: 41 35% 96%;
+    --border: 152 14% 84%;
+    --input: 152 14% 84%;
+    --ring: 152 35% 28%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 154 22% 7%;
+    --foreground: 41 28% 92%;
+    --card: 154 22% 10%;
+    --card-foreground: 41 28% 92%;
+    --popover: 154 22% 10%;
+    --popover-foreground: 41 28% 92%;
+    --primary: 152 38% 70%;
+    --primary-foreground: 154 22% 7%;
+    --secondary: 154 18% 16%;
+    --secondary-foreground: 41 28% 92%;
+    --muted: 154 16% 14%;
+    --muted-foreground: 41 12% 70%;
+    --accent: 36 60% 60%;
+    --accent-foreground: 154 22% 7%;
+    --destructive: 0 56% 50%;
+    --destructive-foreground: 41 28% 92%;
+    --border: 154 14% 20%;
+    --input: 154 14% 20%;
+    --ring: 152 38% 60%;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01" 1, "cv01" 1, "cv11" 1, "calt" 1, "rlig" 1;
+  }
+  ::selection {
+    background: hsl(var(--accent) / 0.35);
+    color: hsl(var(--foreground));
+  }
 }
 
 @layer utilities {
+  .font-display {
+    font-family: var(--font-serif), Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.025em;
+  }
+  .font-display-italic {
+    font-family: var(--font-serif), Georgia, serif;
+    font-style: italic;
+    font-weight: 300;
+  }
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
   .text-balance {
     text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  .rule {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      hsl(var(--border)) 20%,
+      hsl(var(--border)) 80%,
+      transparent
+    );
   }
 }

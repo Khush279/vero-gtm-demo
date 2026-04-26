@@ -1,101 +1,173 @@
-import Image from "next/image";
+import Link from "next/link";
+
+/**
+ * Landing page — framed as a cover letter to Adeel and Bill, the two founders
+ * of Vero. One viewport, scannable in 30 seconds. Every other surface in this
+ * repo is reachable from the grid below.
+ */
+
+type Surface = {
+  href: string;
+  title: string;
+  kicker: string;
+  blurb: string;
+};
+
+const SURFACES: Surface[] = [
+  {
+    href: "/pipeline",
+    title: "Pipeline",
+    kicker: "JD: Architect and own the CRM",
+    blurb: "Attio-style board. 500 real Ontario family physicians from the CPSO register, scored and stage-bucketed.",
+  },
+  {
+    href: "/lead/lead_0001",
+    title: "Lead profile",
+    kicker: "JD: Lifecycle flows · nurture sequences",
+    blurb: "Enriched profile with inferred EMR. A 4-touch sequence drafted live by gpt-4o-mini, leverage point per email.",
+  },
+  {
+    href: "/automations",
+    title: "Automations",
+    kicker: "JD: Scripts, integrations, APIs",
+    blurb: "The page that separates GTM engineers from RevOps. Five running jobs, each with its actual TypeScript source.",
+  },
+  {
+    href: "/enterprise",
+    title: "Enterprise",
+    kicker: "JD: Enterprise deals · RFPs · procurement",
+    blurb: "Hospital-system pipeline, named champions, and a pre-filled Ontario Health VoR response template.",
+  },
+  {
+    href: "/analytics",
+    title: "Analytics",
+    kicker: "JD: GA · Search Console · attribution",
+    blurb: "Top-10 organic pages, three keyword bets, funnel attribution by source, and one A/B test I'd ship in week 1.",
+  },
+  {
+    href: "/strategy",
+    title: "Strategy",
+    kicker: "JD: Foundational impact · build GTM from scratch",
+    blurb: "The 90-day plan. Where Vero is, where the wedge is, and what I'd do week by week.",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="space-y-16 pt-2">
+      {/* Hero */}
+      <section className="space-y-6">
+        <div className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-muted-foreground">
+          Founding GTM Engineer · Interview demo
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <h1 className="font-display text-[44px] font-light leading-[1.02] tracking-tightest text-foreground md:text-[64px]">
+          Hello, <span className="font-display-italic text-primary">Adeel and Bill.</span>
+        </h1>
+        <div className="max-w-2xl space-y-4 font-serif text-[17px] leading-relaxed text-foreground/85 md:text-[18px]">
+          <p>
+            I&apos;m Khush. I built this in 48 hours instead of writing a cover letter.
+          </p>
+          <p>
+            Adeel, every email here is calibrated to a real Ontario family physician because
+            what Vero sells is hours back to clinicians like you.
+          </p>
+          <p>
+            Bill, the source is on GitHub, the auto-deploy is on Vercel, and the{" "}
+            <Link href="/automations" className="text-primary underline underline-offset-4 decoration-primary/40 hover:decoration-primary">
+              /automations
+            </Link>{" "}
+            page exists because GTM engineers without code skills are just RevOps.
+          </p>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-3 pt-2">
+          <a
+            href="#"
+            className="inline-flex h-10 items-center gap-2 rounded-md bg-primary px-4 text-[13.5px] font-medium text-primary-foreground transition-opacity hover:opacity-90"
+          >
+            <PlayIcon /> Watch the 6-min walkthrough
+          </a>
+          <Link
+            href="/strategy"
+            className="inline-flex h-10 items-center gap-2 rounded-md border border-border bg-card px-4 text-[13.5px] text-foreground transition-colors hover:bg-muted"
+          >
+            Read the strategy memo
+            <ArrowIcon />
+          </Link>
+        </div>
+      </section>
+
+      {/* Surface grid */}
+      <section className="space-y-4">
+        <div className="flex items-baseline justify-between">
+          <h2 className="font-display text-[22px] tracking-tight text-foreground">
+            The seven surfaces.
+          </h2>
+          <span className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-muted-foreground">
+            One per JD bullet
+          </span>
+        </div>
+        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
+          {SURFACES.map((s) => (
+            <Link
+              key={s.href}
+              href={s.href}
+              className="group flex flex-col gap-3 bg-card p-6 transition-colors hover:bg-muted/40"
+            >
+              <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+                {s.kicker}
+              </div>
+              <div className="flex items-start justify-between gap-3">
+                <div className="font-display text-[24px] tracking-tight text-foreground">
+                  {s.title}
+                </div>
+                <ArrowIcon className="mt-1 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-foreground" />
+              </div>
+              <p className="text-pretty text-[13.5px] leading-relaxed text-muted-foreground">
+                {s.blurb}
+              </p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* About this build */}
+      <section className="rounded-lg border border-border bg-muted/30 p-5">
+        <div className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-muted-foreground">
+          About this build
+        </div>
+        <p className="mt-2 font-mono text-[11.5px] leading-[1.7] text-foreground/80">
+          48-hour scope · Next.js + Tailwind · OpenAI gpt-4o-mini for drafts · 500 leads from
+          CPSO public register · Source not coupled to any prod system
+        </p>
+      </section>
     </div>
+  );
+}
+
+function ArrowIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      width={14}
+      height={14}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.6}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden
+    >
+      <path d="M3 8h10M9 4l4 4-4 4" />
+    </svg>
+  );
+}
+
+function PlayIcon() {
+  return (
+    <svg viewBox="0 0 16 16" width={12} height={12} fill="currentColor" aria-hidden>
+      <path d="M4 3v10l9-5z" />
+    </svg>
   );
 }
