@@ -15,7 +15,9 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/page-header";
 import { EnterpriseCard } from "@/components/enterprise-card";
+import { ReferenceCustomerCard } from "@/components/reference-customer-card";
 import { ENTERPRISE } from "@/data/enterprise";
+import { REFERENCE_CUSTOMERS } from "@/data/reference-customers";
 import {
   PIPEDA_COMPLIANCE,
   DATA_RESIDENCY,
@@ -190,6 +192,36 @@ export default function EnterprisePage() {
           </div>
         </aside>
       </div>
+
+      {/* Reference customers: three named accounts a procurement team can call. */}
+      <section className="space-y-4 pt-4">
+        <div className="flex items-baseline justify-between gap-3">
+          <div className="space-y-1">
+            <div className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-muted-foreground">
+              Reference customers · {REFERENCE_CUSTOMERS.length} active
+            </div>
+            <h2 className="font-display text-[24px] leading-tight tracking-tight text-foreground">
+              Three customers we&rsquo;ll put on a call.
+            </h2>
+            <p className="max-w-2xl text-[13px] leading-relaxed text-muted-foreground">
+              Procurement always asks for references. These three are scoped on
+              purpose: one virtual-care lead, one private specialty network, one
+              hospital-system pilot. Each card lists the topics they&rsquo;ll
+              cover, the topics they won&rsquo;t, and the metrics they&rsquo;ll
+              share on the call.
+            </p>
+          </div>
+          <span className="hidden shrink-0 font-mono text-[10.5px] uppercase tracking-[0.18em] text-muted-foreground md:inline">
+            click to expand
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          {REFERENCE_CUSTOMERS.map((customer) => (
+            <ReferenceCustomerCard key={customer.id} customer={customer} />
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

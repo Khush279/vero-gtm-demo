@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { sans, serif } from "@/lib/fonts";
 import { TopNav } from "@/components/top-nav";
+import { KeyboardShortcuts } from "@/components/keyboard-shortcuts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -30,6 +31,7 @@ export default function RootLayout({
       <body
         className={`${sans.variable} ${serif.variable} min-h-screen bg-background font-sans text-foreground antialiased`}
       >
+        <KeyboardShortcuts />
         <TopNav />
         <main className="mx-auto w-full max-w-7xl px-6 py-8 md:px-10 md:py-12">
           {children}
