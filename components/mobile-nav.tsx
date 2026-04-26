@@ -48,6 +48,8 @@ const NAV = [
   { href: "/contracts", label: "Contracts" },
   { href: "/sources", label: "Sources" },
   { href: "/resources", label: "Resources" },
+  { href: "/docs", label: "Docs" },
+  { href: "/map", label: "Map" },
 ];
 
 export function MobileNav() {

@@ -1,6 +1,6 @@
 {
-  "wave": 9,
-  "shipped_summary": "31 user-facing surfaces, 11 OG image variants, 108 vitest tests, prod build clean.",
+  "wave": 10,
+  "shipped_summary": "33 user-facing surfaces (incl /board-deck), branded /not-found, 11 OG variants, 108 vitest tests, print stylesheet, 12 polish fixes.",
   "shipped": [
     {"wave": 1, "result": "10 surfaces"},
     {"wave": 2, "result": "/experiments /playbooks /day1 + 65 tests + Loom + README"},
@@ -9,25 +9,27 @@
     {"wave": 5, "result": "/case-study /vs-tali /calculator /objections /resources + sparklines"},
     {"wave": 6, "result": "/weekly-digest /prompt-debugger /vs-dax /vs-suki /timeline /interview-prep + 10 OG variants"},
     {"wave": 7, "result": "/demo-script /channel-mix /onboarding-plan /vs-summary /chat (4/6 workers hit org limit; finished gaps)"},
+    {"wave": 8, "result": "/press-release /contracts /qa-summary"},
     {
-      "wave": 8,
+      "wave": 9,
       "workers": [
-        "8.1: /press-release",
-        "8.2: /contracts (MSA + DPIA + NDA downloads)",
-        "8.3: /qa-summary (5-takeaway leave-behind)"
+        "9.1: polish pass — 12 surgical fixes",
+        "9.2: /board-deck — 11 slides + keyboard nav + per-slide print",
+        "9.3: print stylesheet — clean Cmd+P PDFs across 5 surfaces",
+        "9.4: /not-found — 'Wrong room. Right building.' + grouped route map"
       ],
-      "result": "3 small workers shipped clean. Lighter fan-out worked. Em dashes scrubbed from contracts."
+      "result": "All 4 workers clean. Pushed."
     }
   ],
   "in_flight": [],
-  "next_wave_9_candidates": [
-    "Polish pass — visual nits across all 31 surfaces",
-    "Add /board-deck — slides for first board update mock",
-    "Add /sources cross-link audit — link every claim in /strategy back to /sources",
-    "Add /pdf — print-optimized stylesheet so /qa-summary, /strategy, /press-release print clean",
-    "Tighten /pipeline column density",
-    "Add a /404 page with brand-on-404 humor and a route map",
-    "Add /search — global Cmd+K palette over every surface + every section heading",
-    "Wire /chat citations to actually deep-link to the relevant section, not just the page"
+  "next_wave_10_candidates": [
+    "Add a /docs page that's the README + tour as a first-time-visitor walkthrough",
+    "Add /sources cross-link audit — every /strategy claim links to its /sources entry",
+    "Add /diff page showing weekly metrics diffs across 4 weeks (uses existing data)",
+    "Wire /chat citations to deep-link with anchor IDs instead of just route href",
+    "Add /favicon + apple-touch-icon (currently default Next.js icon)",
+    "Add /robots.txt + sitemap.xml for SEO completeness even on demo deploy",
+    "Add a small site-map page (/map) listing every route with one-line descriptions",
+    "Refresh strategy memo with citation deep-links as inline footnotes"
   ]
 }

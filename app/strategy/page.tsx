@@ -124,6 +124,29 @@ export default async function StrategyPage() {
               em: ({ children }) => (
                 <em className="font-display-italic">{children}</em>
               ),
+              sup: ({ children, ...props }) => (
+                <sup
+                  className="ml-0.5 font-mono text-[10.5px] text-primary"
+                  {...props}
+                >
+                  {children}
+                </sup>
+              ),
+              section: ({ children, ...props }) => {
+                const className =
+                  (props as { className?: string }).className ?? "";
+                if (className.includes("footnotes")) {
+                  return (
+                    <section
+                      {...props}
+                      className="mt-12 border-t border-border/60 pt-8 font-serif text-[14px] leading-relaxed text-foreground/80 [&_h2]:font-display [&_h2]:text-[18px] [&_h2]:tracking-tight [&_h2]:text-foreground [&_ol]:mt-4 [&_ol]:ml-6 [&_ol]:list-decimal [&_ol]:space-y-2 [&_ol]:marker:text-muted-foreground [&_ol]:marker:font-mono [&_a]:text-primary [&_a]:underline [&_a]:underline-offset-4 [&_a]:decoration-primary/40 hover:[&_a]:decoration-primary"
+                    >
+                      {children}
+                    </section>
+                  );
+                }
+                return <section {...props}>{children}</section>;
+              },
               table: ({ children }) => (
                 <div className="mt-6 overflow-x-auto rounded-md border border-border/60">
                   <table className="w-full min-w-[560px] text-[13px]">{children}</table>
